@@ -16,7 +16,7 @@
 #include <stdint.h>
 #include <ti/devices/msp/msp.h>
 #include "sysctl.h"
-#include "lab4/I2C/i2c.h"
+#include "i2c.h"
 
 
 /**

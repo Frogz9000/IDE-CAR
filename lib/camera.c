@@ -1,7 +1,7 @@
 #include <ti/devices/msp/msp.h>
-#include "lab5/camera.h"
-#include "lab5/adc12.h"
-#include "lab5/timers.h"
+#include "camera.h"
+#include "adc12.h"
+#include "timers.h"
 static uint8_t cameraData_complete = 0;//0 = not ready, 1 = ready
 static uint16_t cameraData[128];
 static unsigned pixel_counter = 0;

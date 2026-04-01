@@ -12,7 +12,7 @@
 */
 
 #include "uart_extras.h"
-#include "lab2/uart.h"
+#include "uart.h"
 
 /**
  * @brief Prints integer value over UART0

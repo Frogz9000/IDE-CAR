@@ -10,7 +10,7 @@
  * ******************************************************************************
 */
 #include <ti/devices/msp/msp.h>
-#include "lab5/adc12.h"
+#include "adc12.h"
 
 void ADC0_init(void)
 {

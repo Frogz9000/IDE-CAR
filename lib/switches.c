@@ -1,5 +1,5 @@
 #include <ti/devices/msp/msp.h>
-#include "lab1/switches.h"
+#include "switches.h"
 
 void S1_init(void){
 	//enable GPIO A Peripheral

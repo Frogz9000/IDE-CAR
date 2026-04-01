@@ -1,6 +1,6 @@
 #include <ti/devices/msp/msp.h>
 #include "DC_motor.h"
-#include "lab6/timers.h"
+#include "timers.h"
 #include <string.h>
 #include <stdio.h>
 #include <stdint.h>

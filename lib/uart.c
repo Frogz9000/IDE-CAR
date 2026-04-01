@@ -9,7 +9,7 @@
  * ******************************************************************************
 */
 #include <ti/devices/msp/msp.h>
-#include "lab2/uart.h"
+#include "uart.h"
 #include "sysctl.h"
 #include <math.h>
 #ifndef UART0_baud_rate

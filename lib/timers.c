@@ -8,7 +8,7 @@
  * ******************************************************************************
 */
 #include <ti/devices/msp/msp.h>
-#include "lab6/timers.h"
+#include "timers.h"
 #include "arm_compat.h"
 #include "core_cm0plus.h"
 #include "sysctl.h"
