@@ -8,7 +8,7 @@
 ".\objects\oled.o"
 ".\objects\servo.o"
 ".\objects\switches.o"
-".\objects\sysctl.o"
+".\objects\sysctl_1.o"
 ".\objects\timers.o"
 ".\objects\uart.o"
 ".\objects\uart_extras.o"

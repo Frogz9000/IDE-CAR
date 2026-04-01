@@ -1,471 +1,476 @@
 Dependencies for Project 'car_project', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 6140000::V6.14::ARMCLANG
-F (.\main.c)(0x69CD6794)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/main.o -MD)
-I (source\ti\devices\msp\msp.h)(0x69CD5D5F)
-I (source\ti\devices\DeviceFamily.h)(0x69CD5D5F)
-I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5D5F)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6ECE4)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83E7C2)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8FB222)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0DA3EC)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0DA418)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8FB222)
-I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5D5F)
-F (.\source\ti\devices\msp\m0p\startup_system_files\keil\startup_mspm0g350x_uvision.s)(0x69CD5D5F)(--target=arm-arm-none-eabi -mcpu=cortex-m0plus -masm=auto -c-gdwarf-3 -Wa,armasm,--pd,"__EVAL SETA 1"-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 531" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"__MSPM0G3507__ SETA 1"-o ./objects/startup_mspm0g350x_uvision.o)
-F (.\lib\adc12.c)(0x69CD65BF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/adc12.o -MD)
-I (source\ti\devices\msp\msp.h)(0x69CD5D5F)
-I (source\ti\devices\DeviceFamily.h)(0x69CD5D5F)
-I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5D5F)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6ECE4)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83E7C2)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8FB222)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0DA3EC)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0DA418)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8FB222)
-I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5D5F)
-I (lib\adc12.h)(0x69CD5D5F)
-F (.\lib\adc12.h)(0x69CD5D5F)()
-F (.\lib\camera.c)(0x69CD65DF)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/camera.o -MD)
-I (source\ti\devices\msp\msp.h)(0x69CD5D5F)
-I (source\ti\devices\DeviceFamily.h)(0x69CD5D5F)
-I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5D5F)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6ECE4)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83E7C2)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8FB222)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0DA3EC)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0DA418)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8FB222)
-I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5D5F)
-I (lib\camera.h)(0x69CD5D5F)
-I (lib\adc12.h)(0x69CD5D5F)
-I (lib\timers.h)(0x69CD66BB)
-F (.\lib\camera.h)(0x69CD5D5F)()
-F (.\lib\DC_motor.c)(0x69CD65F0)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/dc_motor.o -MD)
-I (source\ti\devices\msp\msp.h)(0x69CD5D5F)
-I (source\ti\devices\DeviceFamily.h)(0x69CD5D5F)
-I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5D5F)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6ECE4)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83E7C2)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8FB222)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0DA3EC)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0DA418)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8FB222)
-I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5D5F)
-I (lib\DC_motor.h)(0x69CD5D5F)
-I (lib\timers.h)(0x69CD66BB)
-I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5ED6ECE4)
-F (.\lib\DC_motor.h)(0x69CD5D5F)()
-F (.\lib\i2c.c)(0x69CD6622)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/i2c.o -MD)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6ECE4)
-I (source\ti\devices\msp\msp.h)(0x69CD5D5F)
-I (source\ti\devices\DeviceFamily.h)(0x69CD5D5F)
-I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5D5F)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6ECE4)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83E7C2)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8FB222)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0DA3EC)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0DA418)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8FB222)
-I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5D5F)
-I (lib\sysctl.h)(0x69CD5D5F)
-I (lib\i2c.h)(0x69CD5D5F)
-F (.\lib\i2c.h)(0x69CD5D5F)()
-F (.\lib\oled.c)(0x69CD5D5F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/oled.o -MD)
-I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x5ED6ECE4)
-I (source\ti\devices\msp\msp.h)(0x69CD5D5F)
-I (source\ti\devices\DeviceFamily.h)(0x69CD5D5F)
-I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5D5F)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6ECE4)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83E7C2)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8FB222)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0DA3EC)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0DA418)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8FB222)
-I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5D5F)
-I (lib\i2c.h)(0x69CD5D5F)
-I (lib\oled.h)(0x69CD5D5F)
-F (.\lib\oled.h)(0x69CD5D5F)()
-F (.\lib\servo.c)(0x69CD662D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/servo.o -MD)
-I (source\ti\devices\msp\msp.h)(0x69CD5D5F)
-I (source\ti\devices\DeviceFamily.h)(0x69CD5D5F)
-I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5D5F)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6ECE4)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83E7C2)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8FB222)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0DA3EC)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0DA418)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8FB222)
-I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5D5F)
-I (lib\servo.h)(0x69CD5D5F)
-I (lib\timers.h)(0x69CD66BB)
-I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5ED6ECE4)
-F (.\lib\servo.h)(0x69CD5D5F)()
-F (.\lib\switches.c)(0x69CD6636)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/switches.o -MD)
-I (source\ti\devices\msp\msp.h)(0x69CD5D5F)
-I (source\ti\devices\DeviceFamily.h)(0x69CD5D5F)
-I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5D5F)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6ECE4)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83E7C2)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8FB222)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0DA3EC)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0DA418)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8FB222)
-I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5D5F)
-I (lib\switches.h)(0x69CD5D5F)
-F (.\lib\switches.h)(0x69CD5D5F)()
-F (.\lib\sysctl.c)(0x69CD5D5F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/sysctl.o -MD)
-I (source\ti\devices\msp\msp.h)(0x69CD5D5F)
-I (source\ti\devices\DeviceFamily.h)(0x69CD5D5F)
-I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5D5F)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6ECE4)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83E7C2)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8FB222)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0DA3EC)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0DA418)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8FB222)
-I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5D5F)
-I (lib\sysctl.h)(0x69CD5D5F)
-F (.\lib\sysctl.h)(0x69CD5D5F)()
-F (.\lib\timers.c)(0x69CD66C0)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/timers.o -MD)
-I (source\ti\devices\msp\msp.h)(0x69CD5D5F)
-I (source\ti\devices\DeviceFamily.h)(0x69CD5D5F)
-I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5D5F)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6ECE4)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83E7C2)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8FB222)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0DA3EC)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0DA418)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8FB222)
-I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5D5F)
-I (lib\timers.h)(0x69CD66BB)
-I (lib\sysctl.h)(0x69CD5D5F)
-F (.\lib\timers.h)(0x69CD66BB)()
-F (.\lib\uart.c)(0x69CD6773)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/uart.o -MD)
-I (source\ti\devices\msp\msp.h)(0x69CD5D5F)
-I (source\ti\devices\DeviceFamily.h)(0x69CD5D5F)
-I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5D5F)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6ECE4)
-I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6ECE4)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8FB222)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83E7C2)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8FB222)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0DA3EC)
-I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0DA418)
-I (C:\Users\samp\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8FB222)
-I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5D5F)
-I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5D5F)
-I (lib\uart.h)(0x69CD676E)
-I (lib\sysctl.h)(0x69CD5D5F)
-I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x5ED6ECE4)
-F (.\lib\uart.h)(0x69CD676E)()
-F (.\lib\uart_extras.c)(0x69CD677A)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/samp/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/uart_extras.o -MD)
-I (lib\uart_extras.h)(0x69CD5D5F)
-I (lib\uart.h)(0x69CD676E)
-F (.\lib\uart_extras.h)(0x69CD5D5F)()
+F (.\main.c)(0x69CD775D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/main.o -MD)
+I (source\ti\devices\msp\msp.h)(0x69CD5EE9)
+I (source\ti\devices\DeviceFamily.h)(0x69CD5EE9)
+I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5EE9)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6C2B4)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83BD92)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8F87F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D79BC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D79E8)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F87F2)
+I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5EE9)
+I (lib\servo.h)(0x69CD5EE9)
+I (lib\sysctl.h)(0x69CD5EE9)
+I (lib\timers.h)(0x69CD6872)
+I (lib\DC_motor.h)(0x69CD5EE9)
+F (.\source\ti\devices\msp\m0p\startup_system_files\keil\startup_mspm0g350x_uvision.s)(0x69CD5EE9)(--target=arm-arm-none-eabi -mcpu=cortex-m0plus -masm=auto -c-gdwarf-3 -Wa,armasm,--pd,"__EVAL SETA 1"-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 531" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"__MSPM0G3507__ SETA 1"-o ./objects/startup_mspm0g350x_uvision.o)
+F (.\lib\adc12.c)(0x69CD6872)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/adc12.o -MD)
+I (source\ti\devices\msp\msp.h)(0x69CD5EE9)
+I (source\ti\devices\DeviceFamily.h)(0x69CD5EE9)
+I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5EE9)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6C2B4)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83BD92)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8F87F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D79BC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D79E8)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F87F2)
+I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5EE9)
+I (lib\adc12.h)(0x69CD5EE9)
+F (.\lib\adc12.h)(0x69CD5EE9)()
+F (.\lib\camera.c)(0x69CD6872)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/camera.o -MD)
+I (source\ti\devices\msp\msp.h)(0x69CD5EE9)
+I (source\ti\devices\DeviceFamily.h)(0x69CD5EE9)
+I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5EE9)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6C2B4)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83BD92)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8F87F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D79BC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D79E8)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F87F2)
+I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5EE9)
+I (lib\camera.h)(0x69CD5EE9)
+I (lib\adc12.h)(0x69CD5EE9)
+I (lib\timers.h)(0x69CD6872)
+F (.\lib\camera.h)(0x69CD5EE9)()
+F (.\lib\DC_motor.c)(0x69CD7800)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/dc_motor.o -MD)
+I (source\ti\devices\msp\msp.h)(0x69CD5EE9)
+I (source\ti\devices\DeviceFamily.h)(0x69CD5EE9)
+I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5EE9)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6C2B4)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83BD92)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8F87F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D79BC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D79E8)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F87F2)
+I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5EE9)
+I (lib\DC_motor.h)(0x69CD5EE9)
+I (lib\timers.h)(0x69CD6872)
+I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5ED6C2B4)
+F (.\lib\DC_motor.h)(0x69CD5EE9)()
+F (.\lib\i2c.c)(0x69CD6872)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/i2c.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6C2B4)
+I (source\ti\devices\msp\msp.h)(0x69CD5EE9)
+I (source\ti\devices\DeviceFamily.h)(0x69CD5EE9)
+I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5EE9)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6C2B4)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83BD92)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8F87F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D79BC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D79E8)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F87F2)
+I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5EE9)
+I (lib\sysctl.h)(0x69CD5EE9)
+I (lib\i2c.h)(0x69CD5EE9)
+F (.\lib\i2c.h)(0x69CD5EE9)()
+F (.\lib\oled.c)(0x69CD5EE9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/oled.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x5ED6C2B4)
+I (source\ti\devices\msp\msp.h)(0x69CD5EE9)
+I (source\ti\devices\DeviceFamily.h)(0x69CD5EE9)
+I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5EE9)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6C2B4)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83BD92)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8F87F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D79BC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D79E8)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F87F2)
+I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5EE9)
+I (lib\i2c.h)(0x69CD5EE9)
+I (lib\oled.h)(0x69CD5EE9)
+F (.\lib\oled.h)(0x69CD5EE9)()
+F (.\lib\servo.c)(0x69CD6872)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/servo.o -MD)
+I (source\ti\devices\msp\msp.h)(0x69CD5EE9)
+I (source\ti\devices\DeviceFamily.h)(0x69CD5EE9)
+I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5EE9)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6C2B4)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83BD92)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8F87F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D79BC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D79E8)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F87F2)
+I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5EE9)
+I (lib\servo.h)(0x69CD5EE9)
+I (lib\timers.h)(0x69CD6872)
+I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5ED6C2B4)
+F (.\lib\servo.h)(0x69CD5EE9)()
+F (.\lib\switches.c)(0x69CD6872)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/switches.o -MD)
+I (source\ti\devices\msp\msp.h)(0x69CD5EE9)
+I (source\ti\devices\DeviceFamily.h)(0x69CD5EE9)
+I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5EE9)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6C2B4)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83BD92)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8F87F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D79BC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D79E8)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F87F2)
+I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5EE9)
+I (lib\switches.h)(0x69CD5EE9)
+F (.\lib\switches.h)(0x69CD5EE9)()
+F (.\lib\sysctl.c)(0x69CD5EE9)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/sysctl_1.o -MD)
+I (source\ti\devices\msp\msp.h)(0x69CD5EE9)
+I (source\ti\devices\DeviceFamily.h)(0x69CD5EE9)
+I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5EE9)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6C2B4)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83BD92)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8F87F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D79BC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D79E8)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F87F2)
+I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5EE9)
+I (lib\sysctl.h)(0x69CD5EE9)
+F (.\lib\sysctl.h)(0x69CD5EE9)()
+F (.\lib\timers.c)(0x69CD770F)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/timers.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5ED6C2B4)
+I (source\ti\devices\msp\msp.h)(0x69CD5EE9)
+I (source\ti\devices\DeviceFamily.h)(0x69CD5EE9)
+I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5EE9)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6C2B4)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83BD92)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8F87F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D79BC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D79E8)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F87F2)
+I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5EE9)
+I (lib\timers.h)(0x69CD6872)
+I (lib\sysctl.h)(0x69CD5EE9)
+F (.\lib\timers.h)(0x69CD6872)()
+F (.\lib\uart.c)(0x69CD6872)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/uart.o -MD)
+I (source\ti\devices\msp\msp.h)(0x69CD5EE9)
+I (source\ti\devices\DeviceFamily.h)(0x69CD5EE9)
+I (source\ti\devices\msp\m0p\mspm0g350x.h)(0x69CD5EE9)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x5ED6C2B4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x5ED6C2B4)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\core_cm0plus.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_version.h)(0x5E8F87F2)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5E83BD92)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\cmsis_armclang.h)(0x5E8F87F2)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_compat.h)(0x5E0D79BC)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x5E0D79E8)
+I (C:\Users\dudki\AppData\Local\Arm\Packs\ARM\CMSIS\5.7.0\CMSIS\Core\Include\mpu_armv7.h)(0x5E8F87F2)
+I (source\ti\devices\msp\peripherals\hw_adc12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_aes.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_comp.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_crc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dac12.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_dma.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_flashctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gpio.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_gptimer.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_i2c.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_iomux.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mathacl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_mcan.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_oa.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_rtc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_spi.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_trng.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_uart.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_vref.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wuc.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\hw_wwdt.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_factoryregion.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_cpuss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_debugss.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\hw_sysctl.h)(0x69CD5EE9)
+I (source\ti\devices\msp\peripherals\m0p\sysctl\hw_sysctl_mspm0g1x0x_g3x0x.h)(0x69CD5EE9)
+I (lib\uart.h)(0x69CD6872)
+I (lib\sysctl.h)(0x69CD5EE9)
+I (C:\Keil_v5\ARM\ARMCLANG\include\math.h)(0x5ED6C2B4)
+F (.\lib\uart.h)(0x69CD6872)()
+F (.\lib\uart_extras.c)(0x69CD6872)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ./lib -I ./source-I./RTE/_Target_1-IC:/Users/dudki/AppData/Local/Arm/Packs/ARM/CMSIS/5.7.0/CMSIS/Core/Include-D__UVISION_VERSION="531" -D_RTE_ -D_RTE_ -D__MSPM0G3507__ -D__MSPM0G3507__-o ./objects/uart_extras.o -MD)
+I (lib\uart_extras.h)(0x69CD5EE9)
+I (lib\uart.h)(0x69CD6872)
+F (.\lib\uart_extras.h)(0x69CD5EE9)()
