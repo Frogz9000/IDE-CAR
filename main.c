@@ -114,6 +114,7 @@ int main(){
 	init_dc_motors(10000,0.2);
 	dc0_forward(0.40);
 	dc1_forward(0.40);
+	//test_suite(SERVO_TEST);
 	
 	return 0;
 }

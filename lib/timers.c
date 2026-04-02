@@ -494,7 +494,7 @@ void TIMA1_PWM_freq_init(uint8_t pin, uint32_t frequency, double percentDutyCycl
 		//Configure CCP as an output for the CC block by setting respective bit in the CCPD registers. For instance, if
 		//TIMx Channel 0 is an output, set CCPD.C0CCP0 = 1
 		TIMA1->COMMONREGS.CCPD |= GPTIMER_CCPD_C0CCP0_OUTPUT;
-		//CCP output action settings�
+		//CCP output action settings
 		TIMA1->COUNTERREGS.CCACT_01[0] |= (GPTIMER_CCACT_01_LACT_CCP_HIGH | GPTIMER_CCACT_01_CDACT_CCP_LOW); 
     //set CCPO = 0 to select the signal generator output.
 		TIMA1->COUNTERREGS.OCTL_01[0] = (GPTIMER_OCTL_01_CCPO_FUNCVAL);

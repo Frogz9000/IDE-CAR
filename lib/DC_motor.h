@@ -7,7 +7,7 @@
 
 void init_dc_motor0(uint32_t frequency, double percentDutyCycle);
 void init_dc_motor1(uint32_t frequency, double percentDutyCycle);
-
+void motor_enable(void);
 void dc0_forward(double percentDutyCycle);
 
 void dc0_backwards(double percentDutyCycle);
