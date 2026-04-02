@@ -354,13 +354,8 @@ void TIMA0_PWM_freq_init(uint8_t pin, uint32_t frequency, double percentDutyCycl
 	
 	uint32_t sys_clk = SYSCTL_SYSCLK_getMCLK();//USE THIS TO DETERMINE FREQ
 	uint32_t period = sys_clk/frequency;
-	if(percentDutyCycle != 0.0){
-		global_period_tim0 = (uint16_t)period;
-	}
+	global_period_tim0 = (uint16_t)period;
 	uint32_t prescaler = 0;
-	
-	
-	
 	
 	//set CLKDIV to 1
 	TIMA0->CLKDIV |= GPTIMER_CLKDIV_RATIO_DIV_BY_1;
@@ -396,7 +391,6 @@ void TIMA0_PWM_freq_init(uint8_t pin, uint32_t frequency, double percentDutyCycl
     //set CCPO = 0 to select the signal generator output.
 		TIMA0->COUNTERREGS.OCTL_01[0] = (GPTIMER_OCTL_01_CCPO_FUNCVAL);
 		TIMA0->COUNTERREGS.IFCTL_01[0] = GPTIMER_IFCTL_01_INV_NOINVERT; 
-		TIMA0->COMMONREGS.ODIS =  GPTIMER_ODIS_C0CCP1_CCP_OUTPUT_LOW;
 
 	}
 	
@@ -415,7 +409,6 @@ void TIMA0_PWM_freq_init(uint8_t pin, uint32_t frequency, double percentDutyCycl
     //set CCPO = 0 to select the signal generator output.
 		TIMA0->COUNTERREGS.OCTL_01[1] = (GPTIMER_OCTL_01_CCPO_FUNCVAL);
 		TIMA0->COUNTERREGS.IFCTL_01[1] = GPTIMER_IFCTL_01_INV_NOINVERT; 
-		TIMA0->COMMONREGS.ODIS =  GPTIMER_ODIS_C0CCP0_CCP_OUTPUT_LOW;
 	}
 		
 	if (pin == 2)//configure GPIOB PB17 channel 2 
@@ -433,7 +426,6 @@ void TIMA0_PWM_freq_init(uint8_t pin, uint32_t frequency, double percentDutyCycl
     //set CCPO = 0 to select the signal generator output.
 		TIMA0->COUNTERREGS.OCTL_23[0] = GPTIMER_OCTL_23_CCPO_FUNCVAL;
 		TIMA0->COUNTERREGS.IFCTL_23[0] = GPTIMER_IFCTL_23_INV_NOINVERT; 
-		TIMA0->COMMONREGS.ODIS =  GPTIMER_ODIS_C0CCP3_CCP_OUTPUT_LOW;
 	}	
 	
 	if (pin == 3)//configure GPIOB PB13 channel 3 
@@ -451,7 +443,6 @@ void TIMA0_PWM_freq_init(uint8_t pin, uint32_t frequency, double percentDutyCycl
     //set CCPO = 0 to select the signal generator output.
 		TIMA0->COUNTERREGS.OCTL_23[1] = GPTIMER_OCTL_23_CCPO_FUNCVAL;
 		TIMA0->COUNTERREGS.IFCTL_23[1] = GPTIMER_IFCTL_23_INV_NOINVERT; 
-		TIMA0->COMMONREGS.ODIS =  GPTIMER_ODIS_C0CCP2_CCP_OUTPUT_LOW;
 	}
 	TIMA0->COUNTERREGS.CTRCTL |= GPTIMER_CTRCTL_EN_ENABLED;
 }

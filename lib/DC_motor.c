@@ -38,3 +38,11 @@ void dc1_backwards(double percentDutyCycle){
 	TIMA1_PWM_DutyCycle(2, 0.0);
 	TIMA1_PWM_DutyCycle(3, percentDutyCycle);
 }
+
+
+void init_dc_motors(uint32_t frequency, double percentDutyCycle){
+	TIMA0_PWM_freq_init(1, frequency, 0.0);
+	TIMA1_PWM_freq_init(3, frequency, 0.0);
+	TIMA0_PWM_freq_init(0, frequency, percentDutyCycle);
+	TIMA1_PWM_DutyCycle(3, percentDutyCycle);
+}

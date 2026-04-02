@@ -109,8 +109,11 @@ void test_suite(enum test test_todo){
 
 int main(){	
 	safe_startup_inits();
-	test_suite(CAMERA_TEST);
-	//init_dc_motor0(10000,0.20);
-	//init_dc_motor1(10000,0.20)
+	
+	//test_suite(CAMERA_TEST);
+	init_dc_motors(10000,0.2);
+	dc0_forward(0.40);
+	dc1_forward(0.40);
+	
 	return 0;
 }

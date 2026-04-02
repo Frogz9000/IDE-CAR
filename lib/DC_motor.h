@@ -16,5 +16,6 @@ void dc1_forward(double percentDutyCycle);
 
 void dc1_backwards(double percentDutyCycle);
 
+void init_dc_motors(uint32_t frequency, double percentDutyCycle);
 
 #endif // _TIMERS_H_
