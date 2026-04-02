@@ -62,7 +62,7 @@ void motor_enable(){
 	IOMUX->SECCFG.PINCM[IOMUX_PINCM47] |= (0x80 | 0x01); //set red to IO
 	IOMUX->SECCFG.PINCM[IOMUX_PINCM47] |= IOMUX_PINCM_DRV_DRVVAL1; //set to high drive strength
 	GPIOA->DOESET31_0 |= (1 << 22); //enable output to PB26
-	GPIOA->DOUTCLR31_0 |= (1 << 22); //set low since led active high
+	GPIOA->DOUTSET31_0 |= (1 << 22); //set low since led active high
 
 }
 

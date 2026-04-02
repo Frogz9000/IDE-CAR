@@ -109,11 +109,28 @@ void test_suite(enum test test_todo){
 
 int main(){	
 	safe_startup_inits();
+	//init_dc_motors(10000,0.2);
+	while(1){
+		if(Camera_isDataReady()){	
+			uint16_t* cameraData = Camera_getData();
+			OLED_DisplayCameraData(cameraData);
+			//apply edge filter
+			
+			//if edges, try to center
+			
+			//if no edges go straight
+			
+			//if only left edge(edge < 64) turn right
+			
+			//if only right edge(edge > 64) turn left
+		}
+	}
+	
 	
 	//test_suite(CAMERA_TEST);
-	init_dc_motors(10000,0.2);
-	dc0_forward(0.40);
-	dc1_forward(0.40);
+	//init_dc_motors(10000,0.2);
+	//dc0_forward(0.40);
+	//dc1_forward(0.40);
 	//test_suite(SERVO_TEST);
 	
 	return 0;
