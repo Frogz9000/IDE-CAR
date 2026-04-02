@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>__MSPM0G3507__</Define>
               <Undefine></Undefine>
-              <IncludePath>.\lib;.\source</IncludePath>
+              <IncludePath>.\source;.\lib</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>

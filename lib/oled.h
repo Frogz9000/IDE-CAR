@@ -98,6 +98,7 @@ extern void OLED_Print(int row, int col, char *txt);
 extern void OLED_draw(int x, int y, unsigned char ascii);
 extern void OLED_draw_extended(int x, int y, unsigned char ascii);
 extern void OLED_PrintLine(char *str);
+extern void OLED_ClearLine(void);
 extern void draw_1d_data(uint16_t *camera_in_array);
 void oled_set_cursor(uint8_t x, uint8_t y);
 void oled_write_char(char c, uint8_t x, uint8_t y);

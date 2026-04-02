@@ -352,9 +352,11 @@ void TIMA0_PWM_freq_init(uint8_t pin, uint32_t frequency, double percentDutyCycl
 	//uses MCLK as BUSCLK = 80MHz
 	TIMA0->CLKSEL |= GPTIMER_CLKSEL_BUSCLK_SEL_ENABLE;
 	
-	uint32_t sys_clk = 32000000;//SYSCTL_SYSCLK_getMCLK();//USE THIS TO DETERMINE FREQ
+	uint32_t sys_clk = SYSCTL_SYSCLK_getMCLK();//USE THIS TO DETERMINE FREQ
 	uint32_t period = sys_clk/frequency;
-	global_period_tim0 = (uint16_t)period;
+	if(percentDutyCycle != 0.0){
+		global_period_tim0 = (uint16_t)period;
+	}
 	uint32_t prescaler = 0;
 	
 	
@@ -468,8 +470,7 @@ void TIMA1_PWM_freq_init(uint8_t pin, uint32_t frequency, double percentDutyCycl
 	//TIMCLK CONFIGURATION
 	//uses MCLK as BUSCLK = 80MHz
 	TIMA1->CLKSEL |= GPTIMER_CLKSEL_BUSCLK_SEL_ENABLE;
-	uint32_t sys_clk = 32000000;//SYSCTL_SYSCLK_getMCLK();//USE THIS TO DETERMINE FREQ
-	uint32_t period = 2510;//sys_clk/frequency;
+	uint32_t period = 2510;
 	global_period_tim1 = (uint16_t)period;
 	uint32_t prescaler = 255;
 	

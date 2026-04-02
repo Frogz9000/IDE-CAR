@@ -310,3 +310,8 @@ void OLED_PrintLine(char *str)
     OLED_Print(textIndex + 1, 1, str);
     textIndex = (textIndex + 1) % 4;
 }
+
+void OLED_ClearLine()
+{
+    OLED_Print(textIndex + 1, 1, "               ");
+}

@@ -3,8 +3,27 @@
 #include "sysctl.h"
 #include "timers.h"
 #include "DC_motor.h"
-void delay(int time_ms);
+#include "switches.h"
+#include "i2c.h"
+#include "oled.h"
+#include "uart.h"
 
+//macros, constants, enums
+enum test{
+	SERVO_TEST,
+	BLE_TEST,
+	OLED_TEST
+};
+
+//main prototypes
+void delay(int time_ms);
+void servo_test(void);
+void OLED_test(void);
+void bluetooth_test(void);
+void safe_startup_inits(void);
+void test_suite(enum test test_todo);
+
+//main functions
 void delay(int time_ms){
 	unsigned long cycles_per_ms = SYSCTL_SYSCLK_getMCLK()/1000;
 	unsigned long time_to_clk_cycles = (unsigned long)time_ms*cycles_per_ms;
@@ -12,49 +31,69 @@ void delay(int time_ms){
 	for (volatile unsigned long i=time_to_clk_cycles; i>0; i--);
 }
 
-int main(){	
+void servo_test(){
+	TIMA1_PWM_DutyCycle(0, 0.05);
+	delay(50);
+	TIMA1_PWM_DutyCycle(0, 0.075);
+	delay(50);
+	TIMA1_PWM_DutyCycle(0, 0.1);
+	delay(50);
+	TIMA1_PWM_DutyCycle(0, 0.075);
+	delay(50);
+}
 
-	init_dc_motor0(10000,0.20);
-	init_dc_motor1(10000,0.20);
-	init_servo_motor(50, 0.075);
-	delay(10);
-	//init_servo_motor(50, 0.05);
-	//TIMA1_PWM_DutyCycle(0, 0.05);
-	delay(10);
-	init_servo_motor(50, 0.1);
-	//TIMA1_PWM_DutyCycle(0, 0.075);
-	double duty_cycle_iter = 0.0;
-	while(1);
+void OLED_test(){
+	char* test_string = "Screen Works :)";
+	OLED_display_clear();
+	OLED_PrintLine(test_string);
+}
+
+void bluetooth_test(){
+	char current_read;
+	char display[15];
+	uint8_t display_size = 0;
 	while(1){
-		//go 0 to 100 forward
-		while(duty_cycle_iter<1){
-			dc0_forward(duty_cycle_iter);
-			duty_cycle_iter+=0.01;
-			
-
-			TIMA1_PWM_DutyCycle(0, 0.1);
-		}
-		//go 100 to 0 forward
-		while (duty_cycle_iter>0){
-			dc0_forward(duty_cycle_iter);
-			duty_cycle_iter-=0.01;
-			delay(10);
-			TIMA1_PWM_DutyCycle(0, 0.05);
-		}
-		
-		//go 0 to 100 backwards
-		while(duty_cycle_iter<1){
-			dc0_backwards(duty_cycle_iter);
-			duty_cycle_iter+=0.01;
-			delay(10);
-			TIMA1_PWM_DutyCycle(0, 0.1);
-		}
-		//go 100 to 0 backwards
-		while (duty_cycle_iter>0){
-			dc0_backwards(duty_cycle_iter);
-			duty_cycle_iter-=0.01;
-			delay(10);
-			TIMA1_PWM_DutyCycle(0, 0.05);
+		if(UART1_peek_receive()){
+			current_read = UART1_getchar();
+			//end message
+			if (current_read == '\r'){
+				OLED_ClearLine();
+				OLED_PrintLine(display);
+				display_size = 0;		
+				break;				
+			}
+			//populate string
+			else{
+				//message overflow
+				if(display_size>14){
+					OLED_ClearLine();
+					OLED_PrintLine(display);
+					display_size = 0;
+					}
+				display[display_size] = current_read;
+				display[display_size+1] = '\0';
+				display_size++;
+			}
 		}
 	}
+}
+
+void safe_startup_inits(){
+	OLED_Init();
+	UART1_init();
+	init_servo_motor(50, 0.075);
+}
+
+void test_suite(enum test test_todo){
+	if(test_todo == SERVO_TEST){while(1){servo_test();}}
+	if(test_todo == BLE_TEST){while(1){bluetooth_test();}}
+	if(test_todo == OLED_TEST){OLED_test();}
+}
+
+int main(){	
+	safe_startup_inits();
+	test_suite(BLE_TEST);
+	//init_dc_motor0(10000,0.20);
+	//init_dc_motor1(10000,0.20)
+	return 0;
 }
