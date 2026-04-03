@@ -7,6 +7,7 @@
 #include "i2c.h"
 #include "oled.h"
 #include "uart.h"
+#include "uart_extras.h"
 #include "adc12.h"
 #include "camera.h"
 //macros, constants, enums
@@ -25,8 +26,8 @@ void bluetooth_test(void);
 void camera_test(void);
 void safe_startup_inits(void);
 void test_suite(enum test test_todo);
-
-
+void norm_trace(uint16_t* data, uint16_t* output);
+void derivative(uint16_t* data, uint16_t* deriv_data);
 
 //main functions
 void delay(int time_ms){
@@ -95,6 +96,7 @@ void camera_test(){
 void safe_startup_inits(){
 	OLED_Init();
 	UART1_init();
+	UART0_init();
 	ADC0_init();
 	Camera_init();
 	init_servo_motor(50, 0.075);
@@ -113,9 +115,24 @@ int main(){
 	while(1){
 		if(Camera_isDataReady()){	
 			uint16_t* cameraData = Camera_getData();
-			OLED_DisplayCameraData(cameraData);
+			//uint16_t normData[128];
+			//uint16_t derivData[128];
+			//norm_trace(cameraData, normData);
+			//OLED_DisplayCameraData(cameraData);
+
+			UART0_put("-1\r\n");
+			uint16_t* temp = Camera_getData();
+			for(int i=0; i<128 ;i++){
+				UART0_printDec(*temp);
+				temp++;
+				UART0_put("\r\n");
+			}
+			UART0_put("-2\r\n");
+			//derivative(normData, derivData);
+		}
 			//apply edge filter
-			
+		
+
 			//if edges, try to center
 			
 			//if no edges go straight
@@ -124,7 +141,7 @@ int main(){
 			
 			//if only right edge(edge > 64) turn left
 		}
-	}
+	
 	
 	
 	//test_suite(CAMERA_TEST);
@@ -134,4 +151,37 @@ int main(){
 	//test_suite(SERVO_TEST);
 	
 	return 0;
+}
+
+void norm_trace(uint16_t* data, uint16_t* norm_data)
+{
+	norm_data[0] = data[0];
+	norm_data[1] = data[1];
+	for (int i = 2; i < 126; i++)
+	{
+		norm_data[i] = data[i] + data[i-1] + data[i-2] +data[i+1] + data[i+2];
+		norm_data[i] /= 5;
+	}
+	norm_data[126] = data[126];
+	norm_data[127] = data[127];
+}
+
+void derivative(uint16_t* data, uint16_t* deriv_data)
+{
+	int h[3];
+	h[0] = -1;
+	h[1] = 0;
+	h[2] = 1;
+	for (int i = 1; i < 127; i++)
+	{
+		deriv_data[i] = 0.0;
+		for (int j = 0; j < 3; j++)
+		{
+			int xi = i - j;
+		  if (xi >= 0 && xi < 128)
+			{
+				deriv_data[i] += h[j] * data[xi];
+			}
+		}
+	}
 }
