@@ -110,6 +110,19 @@ void test_suite(enum test test_todo){
 	if(test_todo == CAMERA_TEST){camera_test();}
 }
 
+void norm_trace(uint16_t* data, uint16_t* norm_data)
+{
+	norm_data[0] = data[0];
+	norm_data[1] = data[1];
+	for (int i = 2; i < 126; i++)
+	{
+		norm_data[i] = data[i] + data[i-1] + data[i-2] +data[i+1] + data[i+2];
+		norm_data[i] /= 5;
+	}
+	norm_data[126] = data[126];
+	norm_data[127] = data[127];
+}
+
 int main(){	
 	safe_startup_inits();
 	uint16_t normData[128];
