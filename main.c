@@ -10,6 +10,7 @@
 #include "uart_extras.h"
 #include "adc12.h"
 #include "camera.h"
+#include <stdlib.h>
 //macros, constants, enums
 enum test{
 	SERVO_TEST,
@@ -98,7 +99,7 @@ void safe_startup_inits(){
 	UART1_init();
 	UART0_init();
 	ADC0_init();
-	Camera_init();
+	Camera_Freq_init();
 	init_servo_motor(50, 0.075);
 }
 
@@ -115,20 +116,22 @@ int main(){
 	while(1){
 		if(Camera_isDataReady()){	
 			uint16_t* cameraData = Camera_getData();
-			//uint16_t normData[128];
-			//uint16_t derivData[128];
-			//norm_trace(cameraData, normData);
-			//OLED_DisplayCameraData(cameraData);
+			uint16_t normData[128];
+			uint16_t derivData[128];
+			norm_trace(cameraData, normData);
+			//OLED_DisplayCameraData(normData);
 
+
+			derivative(normData, derivData);
 			UART0_put("-1\r\n");
-			uint16_t* temp = Camera_getData();
+			uint16_t* temp = normData;
 			for(int i=0; i<128 ;i++){
 				UART0_printDec(*temp);
 				temp++;
-				UART0_put("\r\n");
+				UART0_put(",");
 			}
 			UART0_put("-2\r\n");
-			//derivative(normData, derivData);
+			OLED_DisplayCameraData(derivData);
 		}
 			//apply edge filter
 		
@@ -168,20 +171,27 @@ void norm_trace(uint16_t* data, uint16_t* norm_data)
 
 void derivative(uint16_t* data, uint16_t* deriv_data)
 {
+	int store;
 	int h[3];
 	h[0] = -1;
 	h[1] = 0;
 	h[2] = 1;
 	for (int i = 1; i < 127; i++)
 	{
+		store = 0;
 		deriv_data[i] = 0.0;
 		for (int j = 0; j < 3; j++)
 		{
-			int xi = i - j;
-		  if (xi >= 0 && xi < 128)
+			store = 0;
+			int xi = i - 1 + j;
+		  if (xi > 0 && xi < 128)
 			{
-				deriv_data[i] += h[j] * data[xi];
+				store += h[j] * data[xi];
+				
 			}
+			
 		}
+		deriv_data[i] = (uint16_t) abs(store);
+		
 	}
 }

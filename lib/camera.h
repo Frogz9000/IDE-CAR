@@ -20,7 +20,7 @@
  * @brief Initialize camera associated components
 */
 void Camera_init(void);
-
+void Camera_Freq_init(void);
 
 /**
  * @brief Checks whether camer data is ready to retrieve

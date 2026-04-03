@@ -18,13 +18,13 @@
  * @note Timer G0 is in Power Domain 0. Check page 3 of the Data Sheet
 */
 void TIMG0_init(uint32_t period, uint32_t prescaler);
-
+void TIMG0_freq_init(uint32_t frequency);
 
 /**
  * @brief Timer G6 module initialization. General purpose timer
 */
 void TIMG6_init(uint32_t period, uint32_t prescaler);
-
+void TIMG6_freq_init(uint32_t frequency);
 
 /**
  * @brief Timer G12 module initialization. General purpose timer

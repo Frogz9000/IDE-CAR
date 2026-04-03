@@ -6,7 +6,7 @@ static uint8_t cameraData_complete = 0;//0 = not ready, 1 = ready
 static uint16_t cameraData[128];
 static unsigned pixel_counter = 0;
 //timer phase defines as 0.5ms then scaled by this macro scale factor(15 = 7.5ms)
-#define integration_time_mult 15
+#define integration_time_mult 25
 
 
 /**
@@ -44,6 +44,37 @@ void Camera_init(void){
 	TIMG6_init(2500*integration_time_mult,0);//80Mhz Busclk/(8) = 10MHz.
 }
 
+void Camera_Freq_init(void){
+	//enable GPIO A Peripheral
+	if(!(GPIOA->GPRCM.PWREN & GPIO_PWREN_ENABLE_ENABLE)){
+		//reset peripheral
+		GPIOA->GPRCM.RSTCTL |= (GPIO_RSTCTL_KEY_UNLOCK_W | GPIO_RSTCTL_RESETASSERT_ASSERT);
+		//enable peripheral
+		GPIOA->GPRCM.PWREN |= (GPIO_PWREN_KEY_UNLOCK_W | GPIO_PWREN_ENABLE_ENABLE);
+	}
+	
+	//configure GPIOA PA28 SI 
+	IOMUX->SECCFG.PINCM[IOMUX_PINCM3]|= (0x80 | 0x01 );
+	GPIOA->DOESET31_0 |= GPIO_DOESET31_0_DIO28_SET; 
+	
+	//turn off
+	GPIOA->DOUTCLR31_0 |= GPIO_DOUTCLR31_0_DIO28_CLR;   
+		
+	//configure GPIOA PA12 CLK
+	IOMUX->SECCFG.PINCM[IOMUX_PINCM34]|= (0x80 | 0x01 );
+	GPIOA->DOESET31_0 |= GPIO_DOESET31_0_DIO12_SET; 
+	
+	//turn off
+	GPIOA->DOUTCLR31_0 |= GPIO_DOUTCLR31_0_DIO12_CLR;  
+	//ADC Init
+	ADC0_init();
+	//TIMG0 init at 100kHz. 40Mhz, clk div 8, prescale 50 = (40*10^6)/8*50 = 100kHz clk 
+	TIMG0_freq_init(100000);
+	//Disable TIMG0
+	TIMG0->COUNTERREGS.CTRCTL &= ~(GPTIMER_CTRCTL_EN_ENABLED);
+	//TIMG6 init at integration time
+		TIMG6_init(2500*integration_time_mult,0);//80Mhz Busclk/(8) = 10MHz.
+}
 
 /**
  * @brief Checks whether camer data is ready to retrieve
@@ -111,4 +142,3 @@ void TIMG0_IRQHandler(void){
 		pixel_counter = 0;
 	}
 }
-
