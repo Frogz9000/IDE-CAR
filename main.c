@@ -28,7 +28,7 @@ void camera_test(void);
 void safe_startup_inits(void);
 void test_suite(enum test test_todo);
 void norm_trace(uint16_t* data, uint16_t* output);
-void derivative(uint16_t* data, uint16_t* deriv_data);
+void edge_detector(const uint16_t input[128], uint16_t output[128]);
 
 //main functions
 void delay(int time_ms){
@@ -112,25 +112,18 @@ void test_suite(enum test test_todo){
 
 int main(){	
 	safe_startup_inits();
+	uint16_t normData[128];
+	uint16_t derivData[128];
 	//init_dc_motors(10000,0.2);
 	while(1){
 		if(Camera_isDataReady()){	
 			uint16_t* cameraData = Camera_getData();
-			uint16_t normData[128];
-			uint16_t derivData[128];
+
 			norm_trace(cameraData, normData);
-			//OLED_DisplayCameraData(normData);
 
 
-			derivative(normData, derivData);
-			UART0_put("-1\r\n");
-			uint16_t* temp = normData;
-			for(int i=0; i<128 ;i++){
-				UART0_printDec(*temp);
-				temp++;
-				UART0_put(",");
-			}
-			UART0_put("-2\r\n");
+			edge_detector(normData, derivData);
+
 			OLED_DisplayCameraData(derivData);
 		}
 			//apply edge filter
@@ -169,29 +162,14 @@ void norm_trace(uint16_t* data, uint16_t* norm_data)
 	norm_data[127] = data[127];
 }
 
-void derivative(uint16_t* data, uint16_t* deriv_data)
-{
-	int store;
-	int h[3];
-	h[0] = -1;
-	h[1] = 0;
-	h[2] = 1;
-	for (int i = 1; i < 127; i++)
-	{
-		store = 0;
-		deriv_data[i] = 0.0;
-		for (int j = 0; j < 3; j++)
-		{
-			store = 0;
-			int xi = i - 1 + j;
-		  if (xi > 0 && xi < 128)
-			{
-				store += h[j] * data[xi];
+void edge_detector(const uint16_t input[128], uint16_t output[128]){
+    output[0] = 0;
+    output[127] = 0;
+    
+    for(int i=1; i<127;i++){
+        int32_t diff = (int32_t)input[i+1] - (int32_t)input[i-1];
+        diff = abs(diff);
 				
-			}
-			
-		}
-		deriv_data[i] = (uint16_t) abs(store);
-		
-	}
+        output[i] = (uint16_t)diff;
+    }
 }
