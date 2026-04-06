@@ -11,6 +11,7 @@
 #include "adc12.h"
 #include "camera.h"
 #include <stdlib.h>
+#include <stdio.h>
 //macros, constants, enums
 enum test{
 	SERVO_TEST,
@@ -139,13 +140,17 @@ int main(){
 
 			edge_detector(normData, derivData);
 
-			//OLED_DisplayCameraData(derivData);
+			OLED_DisplayCameraData(derivData);
 			int left_max = left_max_search(derivData);
 			int right_max = right_max_search(derivData);
 			
-			UART1_putchar((char) left_max);
-			UART1_put("   ");
-			UART1_putchar((char) right_max);
+			char buffer1[32];
+			char buffer2[32];
+			snprintf(buffer1, 16, "left max: %d\n\r", left_max);
+			snprintf(buffer2, 16, "right max: %d\n\r", right_max);
+			UART1_put(buffer1);
+			UART1_put(buffer2);
+
 			
 		}
 			//apply edge filter
