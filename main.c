@@ -125,12 +125,46 @@ void norm_trace(uint16_t* data, uint16_t* norm_data)
 	norm_data[126] = data[126];
 	norm_data[127] = data[127];
 }
-
+double index_to_turn(int left_index, int right_index){
+	//0.05 = max left
+	//0.075 = center
+	//1 = max right
+	int left_abs = 64-left_index;
+	int right_abs = right_index - 64;
+	
+	if (left_abs > right_abs){
+		//turn left
+		int turn_amount = left_abs - right_abs;
+		//naive impl
+		if (turn_amount < 30){
+			//small left
+			return 0.0825;
+		}else{
+			//larger left
+			return 0.1;
+		}
+	}
+	else if (left_abs < right_abs){
+		//turn right
+		int turn_amount = right_abs - left_abs;
+		if (turn_amount < 30){
+			//small right
+			return 0.0625;
+		}else{
+			//larger right
+			return 0.05;
+		}
+	}
+	else{
+		//go straight
+		return 0.075;
+	}
+}
 int main(){	
 	safe_startup_inits();
 	uint16_t normData[128];
 	uint16_t derivData[128];
-	//init_dc_motors(10000,0.2);
+	init_dc_motors(10000,0.2);
 	while(1){
 		if(Camera_isDataReady()){	
 			uint16_t* cameraData = Camera_getData();
@@ -140,30 +174,21 @@ int main(){
 
 			edge_detector(normData, derivData);
 
-			OLED_DisplayCameraData(derivData);
+			//OLED_DisplayCameraData(derivData);
 			int left_max = left_max_search(derivData);
 			int right_max = right_max_search(derivData);
 			
-			char buffer1[32];
-			char buffer2[32];
-			snprintf(buffer1, 16, "left max: %d\n\r", left_max);
-			snprintf(buffer2, 16, "right max: %d\n\r", right_max);
-			UART1_put(buffer1);
-			UART1_put(buffer2);
-
+			//char buffer1[32];
+			//char buffer2[32];
+			//snprintf(buffer1, 16, "left max: %d\n\r", left_max);
+			//snprintf(buffer2, 16, "right max: %d\n\r", right_max);
+			//UART1_put(buffer1);
+			//UART1_put(buffer2);
+			double servo_pwm = index_to_turn(left_max,right_max);
+			TIMA1_PWM_DutyCycle(0,servo_pwm);
 			
 		}
-			//apply edge filter
-		
-
-			//if edges, try to center
-			
-			//if no edges go straight
-			
-			//if only left edge(edge < 64) turn right
-			
-			//if only right edge(edge > 64) turn left
-		}
+	}
 	
 	
 	
