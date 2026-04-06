@@ -27,8 +27,10 @@ void bluetooth_test(void);
 void camera_test(void);
 void safe_startup_inits(void);
 void test_suite(enum test test_todo);
-void norm_trace(uint16_t* data, uint16_t* output);
+void norm_trace(uint16_t* data, uint16_t* norm_data);
 void edge_detector(const uint16_t input[128], uint16_t output[128]);
+int left_max_search(uint16_t* data);
+int right_max_search(uint16_t* data);
 
 //main functions
 void delay(int time_ms){
@@ -137,7 +139,14 @@ int main(){
 
 			edge_detector(normData, derivData);
 
-			OLED_DisplayCameraData(derivData);
+			//OLED_DisplayCameraData(derivData);
+			int left_max = left_max_search(derivData);
+			int right_max = right_max_search(derivData);
+			
+			UART1_putchar((char) left_max);
+			UART1_put("   ");
+			UART1_putchar((char) right_max);
+			
 		}
 			//apply edge filter
 		
@@ -162,18 +171,6 @@ int main(){
 	return 0;
 }
 
-void norm_trace(uint16_t* data, uint16_t* norm_data)
-{
-	norm_data[0] = data[0];
-	norm_data[1] = data[1];
-	for (int i = 2; i < 126; i++)
-	{
-		norm_data[i] = data[i] + data[i-1] + data[i-2] +data[i+1] + data[i+2];
-		norm_data[i] /= 5;
-	}
-	norm_data[126] = data[126];
-	norm_data[127] = data[127];
-}
 
 void edge_detector(const uint16_t input[128], uint16_t output[128]){
     output[0] = 0;
@@ -185,4 +182,40 @@ void edge_detector(const uint16_t input[128], uint16_t output[128]){
 				
         output[i] = (uint16_t)diff;
     }
+}
+
+int left_max_search(uint16_t* data)
+{
+	int i;
+	int max = 64;
+	for (i = 64; i > 0; i--)
+	{
+		if (data[i] > data[max])
+		{
+			max = i;
+		}
+		if (data[i - 1] < data[i])
+		{
+			break;
+		}
+	}
+	return max;
+}
+
+int right_max_search(uint16_t* data)
+{
+	int i;
+	int max = 0;
+	for (i = 64; i < 128; i++)
+	{
+		if (data[i] > data[max])
+		{
+			max = i;
+		}
+		if (data[i + 1] < data[i])
+		{
+			break;
+		}
+	}
+	return max;
 }
