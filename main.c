@@ -164,7 +164,7 @@ int main(){
 	safe_startup_inits();
 	uint16_t normData[128];
 	uint16_t derivData[128];
-	//init_dc_motors(10000,0.25);
+	init_dc_motors(10000,0.30);
 	while(1){
 		if(Camera_isDataReady()){	
 			uint16_t* cameraData = Camera_getData();
@@ -174,37 +174,39 @@ int main(){
 
 			edge_detector(normData, derivData);
 
-			//OLED_DisplayCameraData(derivData);
+			//OLED_DisplayCameraData(cameraData);
 			int left_max = left_max_search(derivData);
 			int right_max = right_max_search(derivData);
 			if (left_max == -1 && right_max == -1)
 			{
 				init_dc_motors(10000,0.0);
 			}
+			else if (left_max == -1){
+				//only right peak
+				TIMA1_PWM_DutyCycle(0,0.1);
+				init_dc_motors(10000,0.3);
+			}
+			else if (right_max == -1){
+				TIMA1_PWM_DutyCycle(0,0.05);
+				init_dc_motors(10000,0.3);
+				
+			}
 			else
 			{
-				init_dc_motors(10000,0.25);
+				double servo_pwm = index_to_turn(left_max,right_max);
+				TIMA1_PWM_DutyCycle(0,servo_pwm);
+				init_dc_motors(10000,0.3);
 			}
-			char buffer1[32];
+			//char buffer1[32];
 			//char buffer2[32];
-			snprintf(buffer1, 16, "left max: %d\n\r", left_max);
+			//snprintf(buffer1, 16, "left max: %d\n\r", left_max);
 			//snprintf(buffer2, 16, "right max: %d\n\r", right_max);
-			UART1_put(buffer1);
+			//UART1_put(buffer1);
 			//UART1_put(buffer2);
-			double servo_pwm = index_to_turn(left_max,right_max);
-			TIMA1_PWM_DutyCycle(0,servo_pwm);
+			
 			
 		}
 	}
-	
-	
-	
-	//test_suite(CAMERA_TEST);
-	//init_dc_motors(10000,0.2);
-	//dc0_forward(0.40);
-	//dc1_forward(0.40);
-	//test_suite(SERVO_TEST);
-	
 	return 0;
 }
 
@@ -236,7 +238,7 @@ int left_max_search(uint16_t* data)
 			break;
 		}
 	}
-	if (data[max] < 200)
+	if (data[max] < 250)
 	{
 		return -1;
 	}
@@ -258,7 +260,7 @@ int right_max_search(uint16_t* data)
 			break;
 		}
 	}
-	if (data[max] < 200)
+	if (data[max] < 250)
 	{
 		return -1;
 	}
