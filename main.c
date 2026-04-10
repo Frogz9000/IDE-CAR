@@ -125,45 +125,53 @@ void norm_trace(uint16_t* data, uint16_t* norm_data)
 	norm_data[126] = data[126];
 	norm_data[127] = data[127];
 }
-double index_to_turn(int left_index, int right_index){
+
+#define speed 0.25
+void index_to_turn(int left_index, int right_index){
 	//0.05 = max left
 	//0.075 = center
 	//1 = max right
 	int left_abs = 64-left_index;
 	int right_abs = right_index - 64;
-	
+
 	if (left_abs > right_abs){
 		//turn left
 		int turn_amount = left_abs - right_abs;
 		//naive impl
-		if (turn_amount < 30){
+		if (turn_amount < 15){
 			//small left
-			return 0.0825;
+			TIMA1_PWM_DutyCycle(0,0.0825);
+			motors_forward(speed);
 		}else{
 			//larger left
-			return 0.1;
+			TIMA1_PWM_DutyCycle(0, 0.1);
+			motors_forward(speed);
 		}
 	}
 	else if (left_abs < right_abs){
 		//turn right
 		int turn_amount = right_abs - left_abs;
-		if (turn_amount < 30){
+		if (turn_amount < 15){
 			//small right
-			return 0.0625;
+			TIMA1_PWM_DutyCycle(0, 0.0625);
+			motors_forward(speed);
 		}else{
 			//larger right
-			return 0.05;
+			TIMA1_PWM_DutyCycle(0, 0.05);
+			motors_forward(speed);
 		}
 	}
 	else{
 		//go straight
-		return 0.075;
+		TIMA1_PWM_DutyCycle(0, 0.075);
+		motors_forward(speed);
 	}
 }
 
-#define speed 0.25
 int main(){	
-
+	//SYSCTL_SYSCLK_set(SYSCLK_80MHZ);
+	SYSCTL_SYSCLK_set(SYSCLK_32MHZ);
+	
 	safe_startup_inits();
 	uint16_t normData[128];
 	uint16_t derivData[128];
@@ -190,15 +198,14 @@ int main(){
 				motors_forward(speed);
 			}
 			else if (right_max == -1){
+				//only left peak
 				TIMA1_PWM_DutyCycle(0,0.05);
 				motors_forward(speed);
 				
 			}
 			else
 			{
-				double servo_pwm = index_to_turn(left_max,right_max);
-				TIMA1_PWM_DutyCycle(0,servo_pwm);
-				motors_forward(speed);
+				index_to_turn(left_max,right_max);
 			}
 			//char buffer1[32];
 			//char buffer2[32];
@@ -206,8 +213,6 @@ int main(){
 			//snprintf(buffer2, 16, "right max: %d\n\r", right_max);
 			//UART1_put(buffer1);
 			//UART1_put(buffer2);
-			
-			
 		}
 	}
 	return 0;
