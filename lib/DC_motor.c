@@ -13,6 +13,14 @@ void init_dc_motor0(uint32_t frequency, double percentDutyCycle){
 	
 	
 }
+
+void motors_forward(double percentDutyCycle)
+{
+		dc0_forward(percentDutyCycle);
+	  dc1_forward(percentDutyCycle);
+}
+
+
 void dc0_forward(double percentDutyCycle){
 	TIMA0_PWM_DutyCycle(0, percentDutyCycle);
 	TIMA0_PWM_DutyCycle(1, 0.0);

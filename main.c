@@ -160,11 +160,14 @@ double index_to_turn(int left_index, int right_index){
 		return 0.075;
 	}
 }
+
+#define speed 0.25
 int main(){	
+
 	safe_startup_inits();
 	uint16_t normData[128];
 	uint16_t derivData[128];
-	init_dc_motors(10000,0.30);
+	init_dc_motors(10000,speed);
 	while(1){
 		if(Camera_isDataReady()){	
 			uint16_t* cameraData = Camera_getData();
@@ -179,23 +182,23 @@ int main(){
 			int right_max = right_max_search(derivData);
 			if (left_max == -1 && right_max == -1)
 			{
-				init_dc_motors(10000,0.0);
+				motors_forward(0.0);
 			}
 			else if (left_max == -1){
 				//only right peak
 				TIMA1_PWM_DutyCycle(0,0.1);
-				init_dc_motors(10000,0.3);
+				motors_forward(speed);
 			}
 			else if (right_max == -1){
 				TIMA1_PWM_DutyCycle(0,0.05);
-				init_dc_motors(10000,0.3);
+				motors_forward(speed);
 				
 			}
 			else
 			{
 				double servo_pwm = index_to_turn(left_max,right_max);
 				TIMA1_PWM_DutyCycle(0,servo_pwm);
-				init_dc_motors(10000,0.3);
+				motors_forward(speed);
 			}
 			//char buffer1[32];
 			//char buffer2[32];
@@ -238,7 +241,7 @@ int left_max_search(uint16_t* data)
 			break;
 		}
 	}
-	if (data[max] < 250)
+	if (data[max] < 100)
 	{
 		return -1;
 	}
@@ -260,7 +263,7 @@ int right_max_search(uint16_t* data)
 			break;
 		}
 	}
-	if (data[max] < 250)
+	if (data[max] < 100)
 	{
 		return -1;
 	}
