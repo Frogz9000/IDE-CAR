@@ -245,50 +245,34 @@ int right_max_search(uint16_t *data)
 	return max;
 }
 
-#define speed 0.30
+#define speed 0.25
+#define kp 0.0005
+#define kdest 64
 void index_to_turn(int left_index, int right_index)
 {
-	int center = (left_index + right_index) / 2;
-	int offset = center - 64;
-	if (offset < 0)
+
+  int center = (left_index+right_index)/2;
+	int offset = kdest - center;
+	
+	
+	double servoPos = 0.065 + (kp * (double) offset); //+ kdest*(offset - old_offset);
+	
+	if (servoPos < 0.04)
 	{
-		// turn left
-		// naive impl
-		if (offset > -15)
-		{
-			// small left
-			TIMA1_PWM_DutyCycle(0, 0.075);
-			motors_forward(speed);
-		}
-		else
-		{
-			// larger left
-			TIMA1_PWM_DutyCycle(0, 0.1);
-			motors_forward(speed);
-		}
+		servoPos = 0.04;
 	}
-	else if (offset > 0)
+	if (servoPos > 0.1)
 	{
-		// turn right
-		if (offset < 15)
-		{
-			// small right
-			TIMA1_PWM_DutyCycle(0, 0.055);
-			motors_forward(speed);
-		}
-		else
-		{
-			// larger right
-			TIMA1_PWM_DutyCycle(0, 0.04);
-			motors_forward(speed);
-		}
+		servoPos = 0.1;
 	}
-	else
-	{
-		// go straight
-		TIMA1_PWM_DutyCycle(0, 0.065);
-		motors_forward(speed);
-	}
+	
+	TIMA1_PWM_DutyCycle(0, servoPos);
+	char buffer1[32];
+	snprintf(buffer1, 30,"servoPos:\r\n");
+	UART1_put(buffer1);
+	motors_forward(speed);
+	//old_offset = offset;
+
 }
 
 int main()
