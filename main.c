@@ -245,8 +245,8 @@ int right_max_search(uint16_t *data)
 	return max;
 }
 
-#define speed 0.25
-#define kp 0.0005
+#define speed 0.30
+static double kp =  0.0010;
 #define kdest 64
 void index_to_turn(int left_index, int right_index)
 {
@@ -275,6 +275,32 @@ void index_to_turn(int left_index, int right_index)
 
 }
 
+
+void update_kp_from_uart(double* kp_pointer){
+	char current_read;
+	char kp_val[15] = {0};
+	uint8_t kp_size = 0;
+	uint8_t processing = 1;
+	while(processing){
+		current_read = UART1_getchar();
+		// end message
+		if (current_read == '\r')
+		{
+			double read = atof(kp_val);
+			*kp_pointer = read;
+			processing = 0;
+		}
+		// populate string
+		else
+		{
+			if (kp_size < 14) {
+				kp_val[kp_size++] = current_read;
+			}
+			kp_val[kp_size] = '\0';
+		}
+	}
+}
+
 int main()
 {
 	SYSCTL_SYSCLK_set(SYSCLK_80MHZ);
@@ -286,6 +312,12 @@ int main()
 	int last_right = 64;
 	while (1)
 	{
+		if (UART1_peek_receive())
+		{
+			update_kp_from_uart(&kp);
+			UART1_printFloat(kp);
+		}
+		
 		if (Camera_isDataReady())
 		{
 			uint16_t *cameraData = Camera_getData();
