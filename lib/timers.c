@@ -556,7 +556,7 @@ void TIMA1_PWM_freq_init(uint8_t pin, uint32_t frequency, double percentDutyCycl
 	//TIMCLK CONFIGURATION
 	//uses MCLK as BUSCLK = 80MHz
 	TIMA1->CLKSEL |= GPTIMER_CLKSEL_BUSCLK_SEL_ENABLE;
-	uint32_t period = 2510;
+	uint32_t period = 6250;
 	global_period_tim1 = (uint16_t)period;
 	uint32_t prescaler = 255;
 	

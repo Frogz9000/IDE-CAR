@@ -27,10 +27,6 @@ void UART0_init(void){
 		UART0->GPRCM.RSTCTL |= (UART_RSTCTL_KEY_UNLOCK_W | 1U);
 		//enable peripheral
 		UART0->GPRCM.PWREN |= (UART_PWREN_KEY_UNLOCK_W | 1U);
-		int i = 0;
-		while (i < 4){
-			i++;//wait ~4 upclock cycles for enable to propogate
-		}
 	}
 	IOMUX->SECCFG.PINCM[IOMUX_PINCM21] |= (0x80 | IOMUX_PINCM21_PF_UART0_TX); //set PF and connected
 	
