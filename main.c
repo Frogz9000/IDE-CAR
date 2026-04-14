@@ -172,18 +172,11 @@ void edge_detector(const uint16_t input[128], uint16_t output[128]){
 
 int left_max_search(uint16_t* data)
 {
-	int i;
 	int max = 64;
-	for (i = 64; i > 0; i--)
-	{
-		if (data[i] > data[max])
-		{
-			max = i;
-		}
-		if (data[i - 1] < data[i])
-		{
-			break;
-		}
+	for (int i = 5; i <= 64; i++) {
+    if (data[i] > data[max]) {
+        max = i;
+    }
 	}
 	if (data[max] < 100)
 	{
@@ -194,36 +187,26 @@ int left_max_search(uint16_t* data)
 
 int right_max_search(uint16_t* data)
 {
-	int i;
-	int max = 0;
-	for (i = 64; i < 128; i++)
-	{
-		if (data[i] > data[max])
-		{
+	int max = 64;
+	for (int i = 64; i < 123; i++){
+		if (data[i] > data[max]){
 			max = i;
 		}
-		if (data[i + 1] < data[i])
-		{
-			break;
-		}
 	}
-	if (data[max] < 100)
-	{
+	if (data[max] < 100){
 		return -1;
 	}
 	return max;
 }
 
-#define speed 0.25
+#define speed 0.30
 void index_to_turn(int left_index, int right_index){
-	int left_abs = 64-left_index;
-	int right_abs = right_index - 64;
-
-	if (left_abs > right_abs){
+	int center = (left_index+right_index)/2;
+	int offset = center - 64;
+	if (offset<0){
 		//turn left
-		int turn_amount = left_abs - right_abs;
 		//naive impl
-		if (turn_amount < 15){
+		if (offset > -15){
 			//small left
 			TIMA1_PWM_DutyCycle(0,0.075);
 			motors_forward(speed);
@@ -233,10 +216,9 @@ void index_to_turn(int left_index, int right_index){
 			motors_forward(speed);
 		}
 	}
-	else if (left_abs < right_abs){
+	else if (offset>0){
 		//turn right
-		int turn_amount = right_abs - left_abs;
-		if (turn_amount < 15){
+		if (offset < 15){
 			//small right
 			TIMA1_PWM_DutyCycle(0, 0.055);
 			motors_forward(speed);
@@ -258,40 +240,38 @@ int main(){
 	safe_startup_inits();
 	uint16_t normData[128];
 	uint16_t derivData[128];
-	//init_dc_motors(10000,speed);
+	init_dc_motors(10000,speed);
+	int last_left = 64;
+	int last_right = 64;
 	while(1){
 		if(Camera_isDataReady()){	
 			uint16_t* cameraData = Camera_getData();
 			norm_trace(cameraData, normData);
 			edge_detector(normData, derivData);
-			OLED_DisplayCameraData(cameraData);
+			//OLED_DisplayCameraData(derivData);
 			int left_max = left_max_search(derivData);
 			int right_max = right_max_search(derivData);
 			if (left_max == -1 && right_max == -1)
 			{
-				//motors_forward(0.0);
+				motors_forward(0.0);
+			}else{
+				if (left_max != -1){
+					last_left = left_max;} 
+				else {
+					left_max = last_left;
+				}
+				if (right_max != -1){
+					last_right = right_max;} 
+				else {
+					right_max = last_right;
+				}
+				index_to_turn(left_max,right_max);		
 			}
-			else if (left_max == -1){
-				//only right peak
-				TIMA1_PWM_DutyCycle(0,0.1);
-				//motors_forward(speed);
-			}
-			else if (right_max == -1){
-				//only left peak
-				TIMA1_PWM_DutyCycle(0,0.04);
-				//motors_forward(speed);
-				
-			}
-			else
-			{
-				//index_to_turn(left_max,right_max);
-			}
-			//char buffer1[32];
-			//char buffer2[32];
-			//snprintf(buffer1, 16, "left max: %d\n\r", left_max);
-			//snprintf(buffer2, 16, "right max: %d\n\r", right_max);
+			//char buffer1[64];
+			//snprintf(buffer1,63,"L:%d (%d) R:%d (%d)\r\n", 
+			//left_max, derivData[left_max], 
+			//right_max, derivData[right_max]);
 			//UART1_put(buffer1);
-			//UART1_put(buffer2);
 		}
 	}
 	return 0;
