@@ -36,6 +36,7 @@ int left_max_search(uint16_t *data);
 int right_max_search(uint16_t *data);
 void index_to_turn(int left_index, int right_index);
 void bluetooth_servo_test(void);
+void update_kp_from_uart(double* kp_pointer);
 // main functions
 void delay(int time_ms)
 {
@@ -221,7 +222,7 @@ int left_max_search(uint16_t *data)
 			max = i;
 		}
 	}
-	if (data[max] < 100)
+	if (data[max] < 75)
 	{
 		return -1;
 	}
@@ -238,15 +239,21 @@ int right_max_search(uint16_t *data)
 			max = i;
 		}
 	}
-	if (data[max] < 100)
+	if (data[max] < 40)
 	{
 		return -1;
 	}
 	return max;
 }
 
-#define speed 0.25
-#define kp 0.0005
+#define speed 0.30
+static double kp =  0.00115;
+static double ki =  0.00001;
+static double kd =  0.00001;
+static double error = 0;
+static double error_old = 0;
+
+
 #define kdest 64
 void index_to_turn(int left_index, int right_index)
 {
@@ -254,8 +261,10 @@ void index_to_turn(int left_index, int right_index)
   int center = (left_index+right_index)/2;
 	int offset = kdest - center;
 	
-	
-	double servoPos = 0.065 + (kp * (double) offset); //+ kdest*(offset - old_offset);
+	double servoPos = 0.065 + (kp * (double) offset) +
+										((ki * offset) / 2) +
+										(kd * (offset - (2 * error_old)));
+   error_old = error;	//+ kdest*(offset - old_offset);
 	
 	if (servoPos < 0.04)
 	{
@@ -267,12 +276,52 @@ void index_to_turn(int left_index, int right_index)
 	}
 	
 	TIMA1_PWM_DutyCycle(0, servoPos);
-	char buffer1[32];
-	snprintf(buffer1, 30,"servoPos:\r\n");
-	UART1_put(buffer1);
-	motors_forward(speed);
+	//char buffer1[32];
+	//snprintf(buffer1, 30,"servoPos:\r\n");
+	//UART1_put(buffer1);
+	if (servoPos > 0.06 && servoPos < 0.07)  //subtracted and added .05
+	{
+		motors_forward(0.4);
+	}
+	else if (servoPos < 0.06)
+	{
+		dc0_forward(0.4);
+		dc1_forward(0.18);
+	}
+	else if (servoPos > 0.07)
+	{
+		dc1_forward(0.4);
+		dc0_forward(0.18);
+	}
+
 	//old_offset = offset;
 
+}
+
+
+void update_kp_from_uart(double* kp_pointer){
+	char current_read;
+	char kp_val[15] = {0};
+	uint8_t kp_size = 0;
+	uint8_t processing = 1;
+	while(processing){
+		current_read = UART1_getchar();
+		// end message
+		if (current_read == '\r')
+		{
+			double read = strtod(kp_val, NULL);
+			*kp_pointer = read;
+			processing = 0;
+		}
+		// populate string
+		else
+		{
+			if (kp_size < 14) {
+				kp_val[kp_size++] = current_read;
+			}
+			kp_val[kp_size] = '\0';
+		}
+	}
 }
 
 int main()
@@ -286,6 +335,12 @@ int main()
 	int last_right = 64;
 	while (1)
 	{
+		if (UART1_peek_receive())
+		{
+			update_kp_from_uart(&kp);
+			UART1_printFloat(kp);
+		}
+		
 		if (Camera_isDataReady())
 		{
 			uint16_t *cameraData = Camera_getData();
