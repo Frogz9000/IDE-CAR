@@ -37,6 +37,7 @@ int right_max_search(uint16_t *data);
 void index_to_turn(int left_index, int right_index);
 void bluetooth_servo_test(void);
 void update_kp_from_uart(double* kp_pointer);
+void differential(double servoPosition);
 // main functions
 void delay(int time_ms)
 {
@@ -246,7 +247,7 @@ int right_max_search(uint16_t *data)
 	return max;
 }
 
-#define speed 0.30
+#define speed 0.4
 static double kp =  0.00115;
 static double ki =  0.00001;
 static double kd =  0.00001;
@@ -279,7 +280,7 @@ void index_to_turn(int left_index, int right_index)
 	//char buffer1[32];
 	//snprintf(buffer1, 30,"servoPos:\r\n");
 	//UART1_put(buffer1);
-	if (servoPos > 0.06 && servoPos < 0.07)  //subtracted and added .05
+	/*if (servoPos > 0.06 && servoPos < 0.07)  //subtracted and added .05
 	{
 		motors_forward(0.4);
 	}
@@ -294,10 +295,62 @@ void index_to_turn(int left_index, int right_index)
 		dc0_forward(0.18);
 	}
 
-	//old_offset = offset;
+	//old_offset = offset;*/
+	/*if (servoPos > 0.06 && servoPos < 0.07)  //subtracted and added .05
+	{
+		motors_forward(0.4);
+	}
+	else
+	{
+		differential(servoPos);
+	}*/
+	differential(servoPos);
 
 }
 
+static double kpIn =  8;
+static double kpOut = 3;
+
+void differential(double servoPosition)
+{
+	double angleDifference = (0.065 - servoPosition);
+	if (angleDifference < 0)
+	{
+		angleDifference *= -1.0;
+	}
+	double dutyCycleInner = speed * (1.0-(kpIn * angleDifference)); //0.025
+	double dutyCycleOuter = speed + (kpOut * angleDifference);
+	
+	if (dutyCycleInner > 0.475)
+	{
+		dutyCycleInner = 0.475;
+	}
+	if (dutyCycleInner < 0.25)
+	{
+		dutyCycleInner = 0.25;
+	}
+	if (dutyCycleOuter > 0.475)
+	{
+		dutyCycleOuter = 0.475;
+	}
+	if (dutyCycleOuter < 0.25)
+	{
+		dutyCycleOuter = 0.25;
+	}
+	
+	
+
+	if (servoPosition < 0.06)
+	{
+		dc0_forward(dutyCycleOuter);
+		dc1_forward(dutyCycleInner);
+	}
+	else if (servoPosition > 0.75)
+	{
+		dc1_forward(dutyCycleOuter);
+		dc0_forward(dutyCycleInner);
+	}
+}
 
 void update_kp_from_uart(double* kp_pointer){
 	char current_read;
@@ -335,11 +388,11 @@ int main()
 	int last_right = 64;
 	while (1)
 	{
-		if (UART1_peek_receive())
+		/*if (UART1_peek_receive())
 		{
 			update_kp_from_uart(&kp);
 			UART1_printFloat(kp);
-		}
+		}*/
 		
 		if (Camera_isDataReady())
 		{
@@ -380,5 +433,5 @@ int main()
 			// UART1_put(buffer1);
 		}
 	}
-	return 0;
+	//return 0;
 }
