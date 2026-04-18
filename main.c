@@ -151,9 +151,9 @@ void camera_test()
 
 void safe_startup_inits()
 {
-	OLED_Init();
-	UART1_init();
-	UART0_init();
+	//OLED_Init();
+	//UART1_init();
+	//UART0_init();
 	ADC0_init();
 	Camera_Freq_init();
 	init_servo_motor(50, 0.085);
@@ -188,72 +188,81 @@ void test_suite(enum test test_todo)
 
 void norm_trace(uint16_t *data, uint16_t *norm_data)
 {
-	norm_data[0] = data[0];
-	norm_data[1] = data[1];
-	for (int i = 2; i < 126; i++)
-	{
-		norm_data[i] = data[i] + data[i - 1] + data[i - 2] + data[i + 1] + data[i + 2];
-		norm_data[i] /= 5;
-	}
-	norm_data[126] = data[126];
-	norm_data[127] = data[127];
+    norm_data[0] = data[0];
+    norm_data[1] = data[1];
+    int sum = data[0] + data[1] + data[2] + data[3] + data[4];
+    for (int i = 2; i < 126; i++)
+    {
+        norm_data[i] = (uint16_t)(sum/5);
+        // slide window:
+        sum += data[i + 3];   // add new
+        sum -= data[i - 2];   // remove old
+    }
+
+    norm_data[126] = data[126];
+    norm_data[127] = data[127];
 }
 
 void edge_detector(const uint16_t input[128], uint16_t output[128])
 {
-	output[0] = 0;
-	output[127] = 0;
+    output[0] = 0;
+    output[127] = 0;
 
-	for (int i = 1; i < 127; i++)
-	{
-		int32_t diff = (int32_t)input[i + 1] - (int32_t)input[i - 1];
-		diff = abs(diff);
-
-		output[i] = (uint16_t)diff;
-	}
+    for (int i = 1; i < 127; i++)
+    {
+        int32_t diff = (int32_t)input[i + 1] - (int32_t)input[i - 1];
+        //fast abs(diff)
+        int32_t mask = diff >> 31;
+        diff = (diff ^ mask) - mask;
+        output[i] = (uint16_t)diff;
+    }
 }
 
 int left_max_search(uint16_t *data)
 {
-	int max = 64;
-	for (int i = 5; i <= 64; i++)
-	{
-		if (data[i] > data[max])
-		{
-			max = i;
-		}
-	}
-	if (data[max] < 75)
-	{
-		return -1;
-	}
-	return max;
+    int max = 64;
+    uint16_t max_val = 0;
+    for (int i = 5; i <= 64; i++)
+    {
+        if (data[i] > max_val)
+        {
+            max = i;
+            max_val = data[i];
+        }
+    }
+    if (max_val < 75)
+    {
+        return -1;
+    }
+    return max;
 }
 
 int right_max_search(uint16_t *data)
 {
-	int max = 64;
-	for (int i = 64; i < 123; i++)
-	{
-		if (data[i] > data[max])
-		{
-			max = i;
-		}
-	}
-	if (data[max] < 75)
-	{
-		return -1;
-	}
-	return max;
+    int max = 64;
+    uint16_t max_val = 0;
+    for (int i = 64; i < 123; i++)
+    {
+        if (data[i] > max_val)
+        {
+            max = i;
+            max_val = data[i];
+        }
+    }
+    if (max_val < 75)
+    {
+        return -1;
+    }
+    return max;
 }
 
-#define speed 0.4
-static double kp =  0.00115;
-static double ki =  0.00001;
-static double kd =  0.00001;
-static double error = 0;
-static double error_old = 0;
+#define speed 0.45
+static double kp =  0.0012;   //previous 0.00115
+static double ki =  0.0;
+static double kd =  0.00;    //previous 0.00057
 
+static double error_old = 0;
+static double integral = 0;
 
 #define kdest 64
 void index_to_turn(int left_index, int right_index)
@@ -261,19 +270,19 @@ void index_to_turn(int left_index, int right_index)
 
   int center = (left_index+right_index)/2;
 	int offset = kdest - center;
-	
-	double servoPos = 0.08 + (kp * (double) offset) +
-										((ki * offset) / 2) +
-										(kd * (offset - (2 * error_old)));
-   error_old = error;	//+ kdest*(offset - old_offset);
+	integral += offset; 
+	double servoPos = 0.08 + (kp * (double) offset)
+										+ (ki * integral) +
+										(kd * (offset - error_old));
+   error_old = offset;	//+ kdest*(offset - old_offset);
 	
 	if (servoPos < 0.04)
 	{
 		servoPos = 0.04;
 	}
-	if (servoPos > 0.11)
+	if (servoPos > 0.12)
 	{
-		servoPos = 0.11;
+		servoPos = 0.12;
 	}
 	
 	TIMA1_PWM_DutyCycle(0, servoPos);
@@ -307,32 +316,42 @@ void index_to_turn(int left_index, int right_index)
 	{
 		differential(servoPos);
 	}*/
-	motors_forward(0.35);
-	//differential(servoPos);
-
+	//motors_forward(0.35);
+	if (servoPos < 0.075 || servoPos > 0.085)   //previous 0.55 and 0.095    //better previous 0.065 and 0.085
+	{
+		dc0_forward(0.35);
+		dc1_forward(0.35);
+		differential(servoPos);
+	}
+	else
+	{
+		dc0_forward(speed);
+		dc1_forward(speed);
+	}
 }
 
-static double kpIn =  8;
-static double kpOut = 3;
+static double kpIn =  3;
+static double kpOut = 6;
 
 void differential(double servoPosition)
 {
-	double angleDifference = (0.065 - servoPosition);
+	double angleDifference = (0.08 - servoPosition);
 	if (angleDifference < 0)
 	{
 		angleDifference *= -1.0;
 	}
-	double dutyCycleInner = speed * (1.0-(kpIn * angleDifference)); //0.025
-	double dutyCycleOuter = speed + (kpOut * angleDifference);
-	
-	if (dutyCycleInner > 0.475)
+	//double dutyCycleInner = speed * (1.0-(kpIn * angleDifference)); //0.025
+	//double dutyCycleInner = 0.4;
+	//double dutyCycleOuter = 0.3 + (kpOut * angleDifference);
+	double dutyCycleOuter = 0.45;
+	/*if (dutyCycleInner > 0.475)
 	{
 		dutyCycleInner = 0.475;
 	}
 	if (dutyCycleInner < 0.25)
 	{
 		dutyCycleInner = 0.25;
-	}
+	}*/
 	if (dutyCycleOuter > 0.475)
 	{
 		dutyCycleOuter = 0.475;
@@ -347,14 +366,12 @@ void differential(double servoPosition)
 	if (servoPosition < 0.055)
 	{
 		dc0_forward(dutyCycleOuter);
-		dc1_forward(dutyCycleInner);
+		//dc1_forward(dutyCycleInner);
 	}
-	else if (servoPosition > 0.075)
+	else if (servoPosition > 0.095)
 	{
 		dc1_forward(dutyCycleOuter);
-		dc0_forward(dutyCycleInner);
-	}else{
-		motors_forward(0.40);
+		//dc0_forward(dutyCycleInner);
 	}
 }
 
@@ -363,6 +380,7 @@ void update_kp_from_uart(double* kp_pointer){
 	char kp_val[15] = {0};
 	uint8_t kp_size = 0;
 	uint8_t processing = 1;
+	
 	while(processing){
 		current_read = UART1_getchar();
 		// end message
@@ -405,12 +423,12 @@ int main()
 			uint16_t *cameraData = Camera_getData();
 			norm_trace(cameraData, normData);
 			edge_detector(normData, derivData);
-			OLED_DisplayCameraData(cameraData);
+			//OLED_DisplayCameraData(derivData);
 			int left_max = left_max_search(derivData);
 			int right_max = right_max_search(derivData);
 			if (left_max == -1 && right_max == -1)
 			{
-				motors_forward(0.0);
+					motors_forward(0.0);
 			}
 			else
 			{
