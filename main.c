@@ -156,7 +156,7 @@ void safe_startup_inits()
 	UART0_init();
 	ADC0_init();
 	Camera_Freq_init();
-	init_servo_motor(50, 0.075);
+	init_servo_motor(50, 0.085);
 }
 
 void test_suite(enum test test_todo)
@@ -240,7 +240,7 @@ int right_max_search(uint16_t *data)
 			max = i;
 		}
 	}
-	if (data[max] < 40)
+	if (data[max] < 75)
 	{
 		return -1;
 	}
@@ -262,7 +262,7 @@ void index_to_turn(int left_index, int right_index)
   int center = (left_index+right_index)/2;
 	int offset = kdest - center;
 	
-	double servoPos = 0.065 + (kp * (double) offset) +
+	double servoPos = 0.08 + (kp * (double) offset) +
 										((ki * offset) / 2) +
 										(kd * (offset - (2 * error_old)));
    error_old = error;	//+ kdest*(offset - old_offset);
@@ -271,14 +271,17 @@ void index_to_turn(int left_index, int right_index)
 	{
 		servoPos = 0.04;
 	}
-	if (servoPos > 0.1)
+	if (servoPos > 0.11)
 	{
-		servoPos = 0.1;
+		servoPos = 0.11;
 	}
 	
 	TIMA1_PWM_DutyCycle(0, servoPos);
 	//char buffer1[32];
-	//snprintf(buffer1, 30,"servoPos:\r\n");
+	//snprintf(buffer1, 30,"servoPos: ");
+	//UART1_put(buffer1);
+	//UART1_printFloat(servoPos);
+	//snprintf(buffer1, 30,"\r\n");
 	//UART1_put(buffer1);
 	/*if (servoPos > 0.06 && servoPos < 0.07)  //subtracted and added .05
 	{
@@ -304,7 +307,8 @@ void index_to_turn(int left_index, int right_index)
 	{
 		differential(servoPos);
 	}*/
-	differential(servoPos);
+	motors_forward(0.35);
+	//differential(servoPos);
 
 }
 
@@ -340,15 +344,17 @@ void differential(double servoPosition)
 	
 	
 
-	if (servoPosition < 0.06)
+	if (servoPosition < 0.055)
 	{
 		dc0_forward(dutyCycleOuter);
 		dc1_forward(dutyCycleInner);
 	}
-	else if (servoPosition > 0.75)
+	else if (servoPosition > 0.075)
 	{
 		dc1_forward(dutyCycleOuter);
 		dc0_forward(dutyCycleInner);
+	}else{
+		motors_forward(0.40);
 	}
 }
 
@@ -399,7 +405,7 @@ int main()
 			uint16_t *cameraData = Camera_getData();
 			norm_trace(cameraData, normData);
 			edge_detector(normData, derivData);
-			// OLED_DisplayCameraData(derivData);
+			OLED_DisplayCameraData(cameraData);
 			int left_max = left_max_search(derivData);
 			int right_max = right_max_search(derivData);
 			if (left_max == -1 && right_max == -1)
@@ -426,11 +432,11 @@ int main()
 				}
 				index_to_turn(left_max, right_max);
 			}
-			// char buffer1[64];
-			// snprintf(buffer1,63,"L:%d (%d) R:%d (%d)\r\n",
-			// left_max, derivData[left_max],
-			// right_max, derivData[right_max]);
-			// UART1_put(buffer1);
+			 //char buffer1[64];
+			 //snprintf(buffer1,63,"L:%d (%d) R:%d (%d)\r\n",
+			 //left_max, derivData[left_max],
+			 //right_max, derivData[right_max]);
+			 //UART1_put(buffer1);
 		}
 	}
 	//return 0;
