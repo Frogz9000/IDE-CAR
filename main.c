@@ -30,10 +30,8 @@ void bluetooth_test(void);
 void camera_test(void);
 void safe_startup_inits(void);
 void test_suite(enum test test_todo);
-void norm_trace(uint16_t *data, uint16_t *norm_data);
-void edge_detector(const uint16_t input[128], uint16_t output[128]);
-int left_max_search(uint16_t *data);
-int right_max_search(uint16_t *data);
+void norm_diff_and_peaks(uint16_t *input, uint16_t *output, int* left_max, int* right_max);
+
 void index_to_turn(int left_index, int right_index);
 void bluetooth_servo_test(void);
 void update_kp_from_uart(double* kp_pointer);
@@ -151,9 +149,8 @@ void camera_test()
 
 void safe_startup_inits()
 {
-	//OLED_Init();
+	OLED_Init();
 	//UART1_init();
-	//UART0_init();
 	ADC0_init();
 	Camera_Freq_init();
 	init_servo_motor(50, 0.085);
@@ -186,80 +183,71 @@ void test_suite(enum test test_todo)
 	}
 }
 
-void norm_trace(uint16_t *data, uint16_t *norm_data)
+void norm_diff_and_peaks(uint16_t *input, uint16_t *output, int* left_max, int* right_max)
 {
-    norm_data[0] = data[0];
-    norm_data[1] = data[1];
-    int sum = data[0] + data[1] + data[2] + data[3] + data[4];
-    for (int i = 2; i < 126; i++)
+    output[0] = output[1] = output[2] = 0;
+    output[125] = output[126] = output[127] = 0;
+    int sum_m1 = input[0] + input[1] + input[2] + input[3] + input[4];
+    int sum_p1 = input[2] + input[3] + input[4] + input[5] + input[6];
+
+    
+    int temp_lindex = 64;
+    int temp_rindex = 64;
+    uint16_t temp_rmax = 0;
+    uint16_t temp_lmax = 0;
+    for (int i = 3; i < 125; i++)
     {
-        norm_data[i] = (uint16_t)(sum/5);
-        // slide window:
-        sum += data[i + 3];   // add new
-        sum -= data[i - 2];   // remove old
-    }
+        int norm_m1  = sum_m1 / 5;
+        int norm_p1 = sum_p1 / 5;
 
-    norm_data[126] = data[126];
-    norm_data[127] = data[127];
-}
+        int32_t diff = (int32_t)norm_p1 - (int32_t)norm_m1;
 
-void edge_detector(const uint16_t input[128], uint16_t output[128])
-{
-    output[0] = 0;
-    output[127] = 0;
-
-    for (int i = 1; i < 127; i++)
-    {
-        int32_t diff = (int32_t)input[i + 1] - (int32_t)input[i - 1];
-        //fast abs(diff)
+        // fast abs
         int32_t mask = diff >> 31;
         diff = (diff ^ mask) - mask;
-        output[i] = (uint16_t)diff;
-    }
-}
 
-int left_max_search(uint16_t *data)
-{
-    int max = 64;
-    uint16_t max_val = 0;
-    for (int i = 5; i <= 64; i++)
-    {
-        if (data[i] > max_val)
-        {
-            max = i;
-            max_val = data[i];
+        uint16_t val = (uint16_t)diff;
+        output[i] = val;
+        
+        //get peaks
+        if(i>=5 && i<=64){
+            //left peak
+            if(val > temp_lmax){
+                temp_lmax = val;
+                temp_lindex = i;
+            }
+        }else if (i>64 && i<123){
+            //right peak
+            if(val > temp_rmax){
+                temp_rmax = val;
+                temp_rindex = i;
+            }
         }
+        // slide windows
+        sum_m1  += input[i + 2] - input[i - 3];
+        sum_p1 += input[i + 4] - input[i-1];
     }
-    if (max_val < 75)
-    {
-        return -1;
+    if (temp_lmax < 75){
+        *left_max = -1;
+    }else{
+        *left_max = temp_lindex;
     }
-    return max;
+    if (temp_rmax < 75){
+        *right_max = -1;
+    }else{
+        *right_max = temp_rindex;
+    }
 }
 
-int right_max_search(uint16_t *data)
-{
-    int max = 64;
-    uint16_t max_val = 0;
-    for (int i = 64; i < 123; i++)
-    {
-        if (data[i] > max_val)
-        {
-            max = i;
-            max_val = data[i];
-        }
-    }
-    if (max_val < 75)
-    {
-        return -1;
-    }
-    return max;
-}
-
-#define speed 0.45
-static double kp =  0.0012;   //previous 0.00115
-static double ki =  0.0;
-static double kd =  0.00;    //previous 0.00057
+#define speed 0.4
+#define slow_down 0.3
+#define right_thresh 0.078
+#define left_thresh 0.082
+#define right_thresh2 0.07
+#define left_thresh2 0.09
+static double kp =  0.00115;   //previous 0.0005  good not enough turn				//previous 0.00075 too much os
+static double ki =  0.000;
+static double kd =  0.000;    //previous 0.00057
 
 static double error_old = 0;
 static double integral = 0;
@@ -317,10 +305,14 @@ void index_to_turn(int left_index, int right_index)
 		differential(servoPos);
 	}*/
 	//motors_forward(0.35);
-	if (servoPos < 0.075 || servoPos > 0.085)   //previous 0.55 and 0.095    //better previous 0.065 and 0.085
+	if (servoPos < right_thresh || servoPos > left_thresh)   //previous 0.55 and 0.095    //better previous 0.065 and 0.085
 	{
-		dc0_forward(0.35);
-		dc1_forward(0.35);
+		dc0_forward(slow_down);
+		dc1_forward(slow_down);
+		
+	}
+	if (servoPos < right_thresh2 || servoPos > left_thresh2)
+	{
 		differential(servoPos);
 	}
 	else
@@ -331,7 +323,7 @@ void index_to_turn(int left_index, int right_index)
 }
 
 static double kpIn =  3;
-static double kpOut = 6;
+static double kpOut = 3;
 
 void differential(double servoPosition)
 {
@@ -341,9 +333,9 @@ void differential(double servoPosition)
 		angleDifference *= -1.0;
 	}
 	//double dutyCycleInner = speed * (1.0-(kpIn * angleDifference)); //0.025
-	//double dutyCycleInner = 0.4;
-	//double dutyCycleOuter = 0.3 + (kpOut * angleDifference);
-	double dutyCycleOuter = 0.45;
+	double dutyCycleInner = 0.25;
+	double dutyCycleOuter = 0.3 + (kpOut * angleDifference);
+	//double dutyCycleOuter = 0.475;
 	/*if (dutyCycleInner > 0.475)
 	{
 		dutyCycleInner = 0.475;
@@ -363,15 +355,15 @@ void differential(double servoPosition)
 	
 	
 
-	if (servoPosition < 0.055)
+	if (servoPosition < right_thresh)
 	{
 		dc0_forward(dutyCycleOuter);
-		//dc1_forward(dutyCycleInner);
+		dc1_forward(dutyCycleInner);
 	}
-	else if (servoPosition > 0.095)
+	else if (servoPosition > left_thresh)
 	{
 		dc1_forward(dutyCycleOuter);
-		//dc0_forward(dutyCycleInner);
+		dc0_forward(dutyCycleInner);
 	}
 }
 
@@ -405,11 +397,12 @@ int main()
 {
 	SYSCTL_SYSCLK_set(SYSCLK_80MHZ);
 	safe_startup_inits();
-	uint16_t normData[128];
-	uint16_t derivData[128];
 	init_dc_motors(10000, speed);
 	int last_left = 64;
 	int last_right = 64;
+	int left_max = 0;
+	int right_max = 0;
+	uint16_t array[128];
 	while (1)
 	{
 		/*if (UART1_peek_receive())
@@ -421,11 +414,8 @@ int main()
 		if (Camera_isDataReady())
 		{
 			uint16_t *cameraData = Camera_getData();
-			norm_trace(cameraData, normData);
-			edge_detector(normData, derivData);
-			//OLED_DisplayCameraData(derivData);
-			int left_max = left_max_search(derivData);
-			int right_max = right_max_search(derivData);
+			norm_diff_and_peaks(cameraData, array, &left_max, &right_max);
+			//OLED_DisplayCameraData(array);
 			if (left_max == -1 && right_max == -1)
 			{
 					motors_forward(0.0);
