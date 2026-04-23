@@ -454,7 +454,9 @@ void TIMA0_PWM_freq_init(uint8_t pin, uint32_t frequency, double percentDutyCycl
 	
 	uint32_t sys_clk = SYSCTL_SYSCLK_getMCLK();//USE THIS TO DETERMINE FREQ
 	uint32_t period = sys_clk/frequency;
-	global_period_tim0 = (uint16_t)period;
+	if(percentDutyCycle != 0.0){
+		global_period_tim0 = (uint16_t)period;
+	}
 	uint32_t prescaler = 0;
 
 	//set CLKDIV to 1

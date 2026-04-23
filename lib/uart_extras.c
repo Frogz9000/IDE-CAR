@@ -106,6 +106,7 @@ void UART0_printFloat(double num)
         fractionalPart -= (int)fractionalPart;
     }
 }
+
 void UART1_printFloat(double num)
 {
     if (num < 0)
@@ -127,3 +128,4 @@ void UART1_printFloat(double num)
         fractionalPart -= (int)fractionalPart;
     }
 	}
+

@@ -239,7 +239,7 @@ void norm_diff_and_peaks(uint16_t *input, uint16_t *output, int* left_max, int* 
     }
 }
 
-#define speed 0.3
+#define speed 0.25
 #define slow_down 0.3
 //worked with kp = 0.001 and kd - 0.0008
 static double kp =  0.00075;   //previous 0.0006 too little, 0.001 too much0.0006
@@ -357,13 +357,11 @@ void update_kp_from_uart(double* kp_pointer){
 int main()
 {
 	//SYSCTL_SYSCLK_set(SYSCLK_80MHZ);
-	safe_startup_inits();
-	while(1)
+	safe_startup_inits();	while(1)
 	{
 		TIMA1_PWM_DutyCycle(0, 0.01);
 	}
-	init_dc_motors(10000, 0.2);
-
+	init_dc_motors(10000, speed);
 	int last_left = 64;
 	int last_right = 64;
 	int left_max = 0;
@@ -414,4 +412,6 @@ int main()
 		}
 	}
 	//return 0;
+
 }
+

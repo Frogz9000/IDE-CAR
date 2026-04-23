@@ -96,5 +96,6 @@ void init_dc_motors(uint32_t frequency, double percentDutyCycle){
 	TIMA0_PWM_freq_init(0, frequency, percentDutyCycle);
 	TIMA0_PWM_freq_init(2, frequency, percentDutyCycle);
 
+
 	motor_enable();
 }
