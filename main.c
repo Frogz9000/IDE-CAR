@@ -153,7 +153,6 @@ void safe_startup_inits()
 	UART1_init();
 	ADC0_init();
 	Camera_Freq_init();
-	init_servo_motor(50, 0.03);
 }
 
 void test_suite(enum test test_todo)
@@ -355,10 +354,12 @@ void update_kp_from_uart(double* kp_pointer){
 
 int main()
 {
-	//SYSCTL_SYSCLK_set(SYSCLK_80MHZ);
-	safe_startup_inits();	
-
-	init_dc_motors(10000, speed);
+	//  SYSCTL_SYSCLK_set(SYSCLK_80MHZ);
+	safe_startup_inits();
+	//0.025 left  //0.0175 center //right 0.008
+	init_servo_motor(50, 0.025);	
+	while(1);
+	init_dc_motors(10000, 0.35);
 	int last_left = 64;
 	int last_right = 64;
 	int left_max = 0;

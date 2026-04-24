@@ -85,20 +85,16 @@ void init_dc_motors(uint32_t frequency, double percentDutyCycle){
 	}
 	
 	
-	/*IOMUX->SECCFG.PINCM[IOMUX_PINCM30] |= (0x80 | 0x01); //set port to IO
+	IOMUX->SECCFG.PINCM[IOMUX_PINCM30] |= (0x80 | 0x01); //set port to IO
 	IOMUX->SECCFG.PINCM[IOMUX_PINCM29] |= (0x80 | 0x01); //set port to IO
 	GPIOB->DOESET31_0 |= (1 << 13); 
 	GPIOB->DOUTCLR31_0 |= (1 << 13); 
 
 	
 	GPIOB->DOESET31_0 |= (1 << 12); 
-	GPIOB->DOUTCLR31_0 |= (1 << 12); */
+	GPIOB->DOUTCLR31_0 |= (1 << 12);
 	TIMA0_PWM_freq_init(0, frequency, percentDutyCycle);
 	
 	TIMA0_PWM_freq_init(2, frequency, percentDutyCycle);
-	TIMA0_PWM_freq_init(1, frequency, 0.0);
-	TIMA0_PWM_freq_init(3, frequency, 0.0);
-
-
 	motor_enable();
 }
