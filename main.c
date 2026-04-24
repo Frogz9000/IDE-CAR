@@ -153,7 +153,7 @@ void safe_startup_inits()
 	UART1_init();
 	ADC0_init();
 	Camera_Freq_init();
-	init_servo_motor(50, 0.085);
+	init_servo_motor(50, 0.03);
 }
 
 void test_suite(enum test test_todo)
@@ -240,17 +240,16 @@ void norm_diff_and_peaks(uint16_t *input, uint16_t *output, int* left_max, int* 
 }
 
 #define speed 0.25
-#define slow_down 0.3
 //worked with kp = 0.001 and kd - 0.0008
 static double kp =  0.00075;   //previous 0.0006 too little, 0.001 too much0.0006
 static double ki =  0.000;
-static double kd =  0.0008;//003;//0.0006;//0.0008;    //previous 0.00057
+static double kd =  0.000;//003;//0.0006;//0.0008;    //previous 0.00057
 
 static double error_old = 0;
 static double integral = 0;
 
 #define kdest 64
-#define TURN_SCALE 0.5   //0.1 worked pretty well 
+
 void index_to_turn(int left_index, int right_index)
 {
 
@@ -258,18 +257,18 @@ void index_to_turn(int left_index, int right_index)
 	int center = (left_index+right_index)/2;
 	int offset = kdest - center;
 	//integral += offset; 
-	double servoPos = 0.07 + (kp * (double) offset)
+	double servoPos = 0.03 + (kp * (double) offset)
 										+ (ki * integral) +
 										(kd * (offset - error_old));
    error_old = offset;	//+ kdest*(offset - old_offset);
 	
-	if (servoPos < 0.03)
+	if (servoPos < 0.01)
 	{
-		servoPos = 0.03;
+		servoPos = 0.01;
 	}
-	if (servoPos > 0.13)
+	if (servoPos > 0.05)
 	{
-		servoPos = 0.13;
+		servoPos = 0.05;
 	}
 	
 	TIMA1_PWM_DutyCycle(0, servoPos);
@@ -357,10 +356,8 @@ void update_kp_from_uart(double* kp_pointer){
 int main()
 {
 	//SYSCTL_SYSCLK_set(SYSCLK_80MHZ);
-	safe_startup_inits();	while(1)
-	{
-		TIMA1_PWM_DutyCycle(0, 0.01);
-	}
+	safe_startup_inits();	
+
 	init_dc_motors(10000, speed);
 	int last_left = 64;
 	int last_right = 64;
@@ -379,7 +376,7 @@ int main()
 		{
 			uint16_t *cameraData = Camera_getData();
 			norm_diff_and_peaks(cameraData, array, &left_max, &right_max);
-			//OLED_DisplayCameraData(array);
+			OLED_DisplayCameraData(cameraData);
 			if (left_max == -1 && right_max == -1)
 			{
 					motors_forward(0.0);
