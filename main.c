@@ -22,6 +22,7 @@ enum test
 	BLE_SERVO_TEST,
 };
 
+
 // main prototypes
 void delay(int time_ms);
 void servo_test(void);
@@ -31,7 +32,10 @@ void camera_test(void);
 void safe_startup_inits(void);
 void test_suite(enum test test_todo);
 void norm_diff_and_peaks(uint16_t *input, uint16_t *output, int* left_max, int* right_max);
-
+void GROUP1_IRQHandler(void);
+void config_pb1_interrupts(void);
+void config_pb2_interrupts(void);
+void sendUART0Data(uint16_t* cameraData);
 void index_to_turn(int left_index, int right_index);
 void bluetooth_servo_test(void);
 void update_kp_from_uart(double* kp_pointer);
@@ -151,8 +155,11 @@ void safe_startup_inits()
 {
 	OLED_Init();
 	UART1_init();
+	UART0_init();
 	ADC0_init();
 	Camera_Freq_init();
+	S1_init_interrupt();
+	S2_init_interrupt();
 }
 
 void test_suite(enum test test_todo)
@@ -238,11 +245,11 @@ void norm_diff_and_peaks(uint16_t *input, uint16_t *output, int* left_max, int* 
     }
 }
 
-#define speed 0.4
+static volatile double speed = 0.4;
 //worked with kp = 0.001 and kd - 0.0008
 static double kp =  0.0003; //0.00055;   //previous 0.0006 too little, 0.001 too much0.0006
 static double ki =  0.000;
-static double kd =  0.00035;//003;//0.0006;//0.0008;    //previous 0.00057
+static double kd =  0.000;//003;//0.0006;//0.0008;    //previous 0.00057
 
 static double error_old = 0;
 static double integral = 0;
@@ -256,18 +263,18 @@ void index_to_turn(int left_index, int right_index)
 	int center = (left_index+right_index)/2;
 	int offset = kdest - center;
 	//integral += offset; 
-	double servoPos = 0.013 + (kp * (double) offset)
+	double servoPos = 0.045 + (kp * (double) offset)
 										+ (ki * integral) +
 										(kd * (offset - error_old));
    error_old = offset;	//+ kdest*(offset - old_offset);
 	
-	if (servoPos < 0.005)
+	if (servoPos < 0.01)
 	{
-		servoPos = 0.005;
+		servoPos = 0.01;
 	}
-	if (servoPos > 0.025)
+	if (servoPos > 0.08)
 	{
-		servoPos = 0.025;
+		servoPos = 0.08;
 	}
 	
 	TIMA1_PWM_DutyCycle(0, servoPos);
@@ -284,8 +291,8 @@ void index_to_turn(int left_index, int right_index)
 	}
 	
 	//double reduce_speed = abs_offset * TURN_SCALE;
-	double dutyCycleOuter = 0.3;
-	double dutyCycleInner = 0.2;
+	double dutyCycleOuter = speed - 0.1;
+	double dutyCycleInner = speed - 0.15;
 	//double dutyCycleOuter = speed + (reduce_speed);// * 0.5);  //last number closer to 1 greater turn, to zero less janky
 	//double dutyCycleInner = speed - reduce_speed;
 	
@@ -335,14 +342,17 @@ void update_kp_from_uart(double* kp_pointer){
 		}
 	}
 }
+const double speedValues[3] = {0.4, 0.35, 0.3};
+static volatile int nextSpeed = 0;
 
 int main()
 {
-	//  SYSCTL_SYSCLK_set(SYSCLK_80MHZ);
+	SYSCTL_SYSCLK_set(SYSCLK_80MHZ);
 	safe_startup_inits();
-	//0.025 left  //0.013 center //right 0.005
-	init_servo_motor(50, 0.025);	
-	init_dc_motors(10000, speed);
+	//0.025 left  //0.013 center //right 0.01
+	//init_servo_motor(50, 0.045);	
+	//init_dc_motors(10000, speed);
+
 	int last_left = 64;
 	int last_right = 64;
 	int left_max = 0;
@@ -358,12 +368,15 @@ int main()
 		
 		if (Camera_isDataReady())
 		{
+			double speedChange = speedValues[nextSpeed];
+			speed = speedChange;
 			uint16_t *cameraData = Camera_getData();
 			norm_diff_and_peaks(cameraData, array, &left_max, &right_max);
 			//OLED_DisplayCameraData(cameraData);
+			sendUART0Data(array);
 			if (left_max == -1 && right_max == -1)
 			{
-					motors_forward(0.0);
+					motors_forward(0.15);
 			}
 			else
 			{
@@ -396,3 +409,35 @@ int main()
 
 }
 
+//GPIO interrupt handler
+void GROUP1_IRQHandler(void){
+	//clear intterupt
+	__NVIC_ClearPendingIRQ(GPIOA_INT_IRQn);//This macro is 1 for both A and B
+	//switch 1 IIDX status check
+	if(GPIOA->CPU_INT.IIDX & GPIO_GEN_EVENT1_IIDX_STAT_DIO18){
+		nextSpeed++;
+		if (nextSpeed > 2)
+		{
+			nextSpeed = 0;
+		}
+		UART0_putchar('h');
+	}
+	//switch 2 IIDX status check
+	if(GPIOB->CPU_INT.IIDX == GPIO_CPU_INT_IIDX_STAT_DIO21){
+			UART0_putchar('h');
+
+	}
+}
+
+void sendUART0Data(uint16_t* cameraData)
+{
+
+			UART0_put("-1\r\n");
+			uint16_t* temp = cameraData;
+			for(int i=0; i<128 ;i++){
+				UART0_printDec(*temp);
+				temp++;
+				UART0_put("\r\n");
+			}
+			UART0_put("-2\r\n");
+}

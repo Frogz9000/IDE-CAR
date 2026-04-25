@@ -43,7 +43,7 @@
 
 /* SYSOSC Defaults to 32MHz. */
 // This is correct, even without set() so long as SYSOSC = 32MHz
-static enum SYSCTL_SYSCLK_FREQ SystemMasterClock = SYSCLK_80MHZ;
+static enum SYSCTL_SYSCLK_FREQ SystemMasterClock = SYSCLK_32MHZ;
 
 /**
  * @brief Explicitly sets MCLK and ULPCLK frequencies through SYSPLL
@@ -171,7 +171,7 @@ enum SYSCTL_SYSCLK_FREQ SYSCTL_SYSCLK_getMCLK(void) {
  */
 enum SYSCTL_SYSCLK_FREQ SYSCTL_SYSCLK_getULPCLK(void) {
     // If greater than 32MHz, ULPCLK = MCLK/2
-    if (SystemMasterClock > SYSCLK_80MHZ) {
+    if (SystemMasterClock > SYSCLK_32MHZ) {
         return (SystemMasterClock >> 1);
     } else {
         return SystemMasterClock;
